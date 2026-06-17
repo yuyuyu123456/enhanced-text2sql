@@ -1,16 +1,48 @@
 {
   "router_model_list": [
     {
-      "model_name": "deepseek_r1",
+      "model_name": "glm-4-flash",
       "litellm_params": {
-          "model": "fireworks_ai/accounts/fireworks/models/deepseek-r1",
-          "api_key": "<your api key goes here>"
+          "model": "openai/glm-4-flash",
+          "api_base": "https://open.bigmodel.cn/api/paas/v4/",
+          "api_key": "d6a4f5c99db346f1ba854f2c6aa8c036.ie0btxtYAM9Vvl4Y",
+          "n": 1
+      }
+    },
+    {
+      "model_name": "glm-4-plus",
+      "litellm_params": {
+          "model": "openai/glm-4-plus",
+          "api_base": "https://open.bigmodel.cn/api/paas/v4/",
+          "api_key": "d6a4f5c99db346f1ba854f2c6aa8c036.ie0btxtYAM9Vvl4Y",
+          "n": 1
+      }
+    },
+    {
+      "model_name": "o3-mini",
+      "litellm_params": {
+          "model": "openai/glm-4-plus",
+          "api_base": "https://open.bigmodel.cn/api/paas/v4/",
+          "api_key": "d6a4f5c99db346f1ba854f2c6aa8c036.ie0btxtYAM9Vvl4Y",
+          "n": 1
+      }
+    },
+    {
+      "model_name": "o1-mini",
+      "litellm_params": {
+          "model": "openai/glm-4-plus",
+          "api_base": "https://open.bigmodel.cn/api/paas/v4/",
+          "api_key": "d6a4f5c99db346f1ba854f2c6aa8c036.ie0btxtYAM9Vvl4Y",
+          "n": 1
       }
     }
   ],
-  "open_ai_key": "<your api key goes here>",
-  "model_sql": "deepseek_r1",
-  "model_table_selection": "deepseek_r1",
+  "open_ai_key": "d6a4f5c99db346f1ba854f2c6aa8c036.ie0btxtYAM9Vvl4Y",
+  "embedding_api_key": "d6a4f5c99db346f1ba854f2c6aa8c036.ie0btxtYAM9Vvl4Y",
+  "embedding_api_base": "https://open.bigmodel.cn/api/paas/v4/",
+  "embedding_model_name": "embedding-3",
+  "model_sql": "glm-4-flash",
+  "model_table_selection": "glm-4-flash",
   "model_supports_reasoning": false,
   "descriptors_path": "descriptors/default",
   "docs_md_folder": "training_data_storage/md_docs",

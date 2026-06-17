@@ -54,7 +54,10 @@ def parse_json(text: str) -> dict | list | None:
             result = ast.literal_eval(text.split("```json")[-1].split("```")[0])
         except:
             return None
-    return result
+    # If caller expects a dict (via ** unpacking), return empty dict instead of list/None
+    if result is None:
+        return {}
+    return result if isinstance(result, (dict, list)) else {}
 
 
 def parse_code(text: str) -> str | None:
@@ -179,6 +182,9 @@ def create_default_descriptor(descriptor_base_path: str) -> dict:
             },
         ],
         "open_ai_key": os.getenv("OPENAI_API_KEY"),
+        "embedding_api_key": os.getenv("EMBEDDING_API_KEY"),
+        "embedding_api_base": os.getenv("EMBEDDING_API_BASE"),
+        "embedding_model_name": os.getenv("EMBEDDING_MODEL_NAME"),
         "model": os.getenv("AZURE_API_DEFAULT_MODEL", "gpt-4o-2024-11-20"),
         "descriptors_path": "descriptors/default",
         "docs_md_folder": "training_data_storage/md_docs",
@@ -254,3 +260,98 @@ def get_config(descriptor_base_path: str | None = None):
     descriptor["descriptors_folder"] = descriptor_base_path
 
     return descriptor
+
+
+def parse_schema_sql(
+    schema_path: str, db_name: str = "default", schema_name: str = "main"
+) -> "pd.DataFrame":
+    """Parse a schema.sql file and return a DataFrame matching INFORMATION_SCHEMA format.
+
+    Extracts CREATE TABLE statements to get table names, column names, data types,
+    primary keys, and foreign key relationships.
+
+    Args:
+        schema_path: Path to the schema.sql file.
+        db_name: Database catalog name to use (default: "default").
+        schema_name: Schema name to use (default: "main").
+
+    Returns:
+        pd.DataFrame with columns: table_catalog, table_schema, table_name,
+        column_name, data_type, is_pk, fk_table, fk_column.
+    """
+    import re
+    import pandas as pd
+
+    with open(schema_path, "r") as f:
+        content = f.read()
+
+    rows = []
+    # Match CREATE TABLE statements — capture table name and body
+    table_pattern = re.compile(
+        r"CREATE\s+TABLE\s+(?:IF\s+NOT\s+EXISTS\s+)?[`\"']?(\w+)[`\"']?\s*\((.*?)\)\s*;",
+        re.IGNORECASE | re.DOTALL,
+    )
+
+    for match in table_pattern.finditer(content):
+        table_name = match.group(1)
+        body = match.group(2)
+
+        # Parse foreign keys from this table's body
+        fk_map = {}  # column -> (ref_table, ref_column)
+        fk_pattern = re.compile(
+            r"FOREIGN\s+KEY\s*\(\s*[`\"']?(\w+)[`\"']?\s*\)\s*REFERENCES\s+[`\"']?(\w+)[`\"']?\s*\(\s*[`\"']?(\w+)[`\"']?\s*\)",
+            re.IGNORECASE,
+        )
+        for fk_match in fk_pattern.finditer(body):
+            fk_map[fk_match.group(1)] = (fk_match.group(2), fk_match.group(3))
+
+        # Parse primary key
+        pk_columns = set()
+        pk_pattern = re.compile(
+            r"PRIMARY\s+KEY\s*\(\s*([^)]+)\s*\)", re.IGNORECASE
+        )
+        for pk_match in pk_pattern.finditer(body):
+            cols = re.findall(r"[`\"']?(\w+)[`\"']?", pk_match.group(1))
+            pk_columns.update(cols)
+
+        # Parse individual column definitions
+        # Remove constraint lines (PRIMARY KEY, FOREIGN KEY, CONSTRAINT, CHECK, UNIQUE)
+        body_cleaned = re.sub(
+            r"^\s*(PRIMARY|FOREIGN|CONSTRAINT|CHECK|UNIQUE)\s.*$",
+            "",
+            body,
+            flags=re.IGNORECASE | re.MULTILINE,
+        )
+
+        col_pattern = re.compile(
+            r"^\s*[`\"']?(\w+)[`\"']?\s+(\w+(?:\s*\([^)]*\))?)"
+            r"(?:\s+(?:NOT\s+NULL|NULL|AUTO_INCREMENT|AUTOINCREMENT|PRIMARY\s+KEY|UNIQUE|DEFAULT\s+\S+))*",
+            re.MULTILINE | re.IGNORECASE,
+        )
+        for col_match in col_pattern.finditer(body_cleaned):
+            col_name = col_match.group(1)
+            col_type = col_match.group(2).strip()
+            col_full = col_match.group(0)
+            # Check inline PRIMARY KEY
+            is_pk = col_name in pk_columns or bool(
+                re.search(r"\bPRIMARY\s+KEY\b", col_full, re.IGNORECASE)
+            )
+            fk_table, fk_column = fk_map.get(col_name, (None, None))
+
+            rows.append({
+                "table_catalog": db_name,
+                "table_schema": schema_name,
+                "table_name": table_name,
+                "column_name": col_name,
+                "data_type": col_type,
+                "is_pk": is_pk,
+                "fk_table": fk_table,
+                "fk_column": fk_column,
+            })
+
+    df = pd.DataFrame(rows)
+    logger.info(
+        f"Parsed {len(df)} columns across {df['table_name'].nunique()} tables "
+        f"from {schema_path}"
+    )
+    return df

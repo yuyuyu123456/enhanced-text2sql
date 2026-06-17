@@ -1,0 +1,7580 @@
+[
+  {
+    "db_id": "department_store",
+    "query": "SELECT T1.staff_name ,  T1.staff_gender FROM staff AS T1 JOIN staff_department_assignments AS T2 ON T1.staff_id  =  T2.staff_id WHERE T2.date_assigned_from LIKE \"2016%\"",
+    "query_toks": [
+      "SELECT",
+      "T1.staff_name",
+      ",",
+      "T1.staff_gender",
+      "FROM",
+      "staff",
+      "AS",
+      "T1",
+      "JOIN",
+      "staff_department_assignments",
+      "AS",
+      "T2",
+      "ON",
+      "T1.staff_id",
+      "=",
+      "T2.staff_id",
+      "WHERE",
+      "T2.date_assigned_from",
+      "LIKE",
+      "``",
+      "2016",
+      "%",
+      "''"
+    ],
+    "query_toks_no_value": [
+      "select",
+      "t1",
+      ".",
+      "staff_name",
+      ",",
+      "t1",
+      ".",
+      "staff_gender",
+      "from",
+      "staff",
+      "as",
+      "t1",
+      "join",
+      "staff_department_assignments",
+      "as",
+      "t2",
+      "on",
+      "t1",
+      ".",
+      "staff_id",
+      "=",
+      "t2",
+      ".",
+      "staff_id",
+      "where",
+      "t2",
+      ".",
+      "date_assigned_from",
+      "like",
+      "value"
+    ],
+    "question": "What are the names and genders of staff who were assigned in 2016?",
+    "question_toks": [
+      "What",
+      "are",
+      "the",
+      "names",
+      "and",
+      "genders",
+      "of",
+      "staff",
+      "who",
+      "were",
+      "assigned",
+      "in",
+      "2016",
+      "?"
+    ],
+    "sql": {
+      "from": {
+        "table_units": [
+          [
+            "table_unit",
+            1
+          ],
+          [
+            "table_unit",
+            13
+          ]
+        ],
+        "conds": [
+          [
+            false,
+            2,
+            [
+              0,
+              [
+                0,
+                3,
+                false
+              ],
+              null
+            ],
+            [
+              0,
+              52,
+              false
+            ],
+            null
+          ]
+        ]
+      },
+      "select": [
+        false,
+        [
+          [
+            0,
+            [
+              0,
+              [
+                0,
+                5,
+                false
+              ],
+              null
+            ]
+          ],
+          [
+            0,
+            [
+              0,
+              [
+                0,
+                4,
+                false
+              ],
+              null
+            ]
+          ]
+        ]
+      ],
+      "where": [
+        [
+          false,
+          9,
+          [
+            0,
+            [
+              0,
+              54,
+              false
+            ],
+            null
+          ],
+          "\"2016%\"",
+          null
+        ]
+      ],
+      "groupBy": [],
+      "having": [],
+      "orderBy": [],
+      "limit": null,
+      "intersect": null,
+      "union": null,
+      "except": null
+    }
+  },
+  {
+    "db_id": "department_store",
+    "query": "SELECT customer_name ,  customer_id FROM customers WHERE customer_address LIKE \"%TN%\"",
+    "query_toks": [
+      "SELECT",
+      "customer_name",
+      ",",
+      "customer_id",
+      "FROM",
+      "customers",
+      "WHERE",
+      "customer_address",
+      "LIKE",
+      "``",
+      "%",
+      "TN",
+      "%",
+      "''"
+    ],
+    "query_toks_no_value": [
+      "select",
+      "customer_name",
+      ",",
+      "customer_id",
+      "from",
+      "customers",
+      "where",
+      "customer_address",
+      "like",
+      "value"
+    ],
+    "question": "What are the names and ids of customers whose address contains TN?",
+    "question_toks": [
+      "What",
+      "are",
+      "the",
+      "names",
+      "and",
+      "ids",
+      "of",
+      "customers",
+      "whose",
+      "address",
+      "contains",
+      "TN",
+      "?"
+    ],
+    "sql": {
+      "from": {
+        "table_units": [
+          [
+            "table_unit",
+            4
+          ]
+        ],
+        "conds": []
+      },
+      "select": [
+        false,
+        [
+          [
+            0,
+            [
+              0,
+              [
+                0,
+                14,
+                false
+              ],
+              null
+            ]
+          ],
+          [
+            0,
+            [
+              0,
+              [
+                0,
+                11,
+                false
+              ],
+              null
+            ]
+          ]
+        ]
+      ],
+      "where": [
+        [
+          false,
+          9,
+          [
+            0,
+            [
+              0,
+              15,
+              false
+            ],
+            null
+          ],
+          "\"%TN%\"",
+          null
+        ]
+      ],
+      "groupBy": [],
+      "having": [],
+      "orderBy": [],
+      "limit": null,
+      "intersect": null,
+      "union": null,
+      "except": null
+    }
+  },
+  {
+    "db_id": "department_store",
+    "query": "SELECT product_id FROM product_suppliers ORDER BY total_amount_purchased DESC LIMIT 3",
+    "query_toks": [
+      "SELECT",
+      "product_id",
+      "FROM",
+      "product_suppliers",
+      "ORDER",
+      "BY",
+      "total_amount_purchased",
+      "DESC",
+      "LIMIT",
+      "3"
+    ],
+    "query_toks_no_value": [
+      "select",
+      "product_id",
+      "from",
+      "product_suppliers",
+      "order",
+      "by",
+      "total_amount_purchased",
+      "desc",
+      "limit",
+      "value"
+    ],
+    "question": "What are the ids of the top three products that were purchased in the largest amount?",
+    "question_toks": [
+      "What",
+      "are",
+      "the",
+      "ids",
+      "of",
+      "the",
+      "top",
+      "three",
+      "products",
+      "that",
+      "were",
+      "purchased",
+      "in",
+      "the",
+      "largest",
+      "amount",
+      "?"
+    ],
+    "sql": {
+      "from": {
+        "table_units": [
+          [
+            "table_unit",
+            12
+          ]
+        ],
+        "conds": []
+      },
+      "select": [
+        false,
+        [
+          [
+            0,
+            [
+              0,
+              [
+                0,
+                46,
+                false
+              ],
+              null
+            ]
+          ]
+        ]
+      ],
+      "where": [],
+      "groupBy": [],
+      "having": [],
+      "orderBy": [
+        "desc",
+        [
+          [
+            0,
+            [
+              0,
+              50,
+              false
+            ],
+            null
+          ]
+        ]
+      ],
+      "limit": 3,
+      "intersect": null,
+      "union": null,
+      "except": null
+    }
+  },
+  {
+    "db_id": "department_store",
+    "query": "SELECT avg(product_price) FROM products WHERE product_type_code  =  'Clothes'",
+    "query_toks": [
+      "SELECT",
+      "avg",
+      "(",
+      "product_price",
+      ")",
+      "FROM",
+      "products",
+      "WHERE",
+      "product_type_code",
+      "=",
+      "'Clothes",
+      "'"
+    ],
+    "query_toks_no_value": [
+      "select",
+      "avg",
+      "(",
+      "product_price",
+      ")",
+      "from",
+      "products",
+      "where",
+      "product_type_code",
+      "=",
+      "value"
+    ],
+    "question": "Find the average price of all product clothes.",
+    "question_toks": [
+      "Find",
+      "the",
+      "average",
+      "price",
+      "of",
+      "all",
+      "product",
+      "clothes",
+      "."
+    ],
+    "sql": {
+      "from": {
+        "table_units": [
+          [
+            "table_unit",
+            5
+          ]
+        ],
+        "conds": []
+      },
+      "select": [
+        false,
+        [
+          [
+            5,
+            [
+              0,
+              [
+                0,
+                21,
+                false
+              ],
+              null
+            ]
+          ]
+        ]
+      ],
+      "where": [
+        [
+          false,
+          2,
+          [
+            0,
+            [
+              0,
+              19,
+              false
+            ],
+            null
+          ],
+          "\"Clothes\"",
+          null
+        ]
+      ],
+      "groupBy": [],
+      "having": [],
+      "orderBy": [],
+      "limit": null,
+      "intersect": null,
+      "union": null,
+      "except": null
+    }
+  },
+  {
+    "db_id": "department_store",
+    "query": "SELECT customer_phone FROM customers UNION SELECT supplier_phone FROM suppliers",
+    "query_toks": [
+      "SELECT",
+      "customer_phone",
+      "FROM",
+      "customers",
+      "UNION",
+      "SELECT",
+      "supplier_phone",
+      "FROM",
+      "suppliers"
+    ],
+    "query_toks_no_value": [
+      "select",
+      "customer_phone",
+      "from",
+      "customers",
+      "union",
+      "select",
+      "supplier_phone",
+      "from",
+      "suppliers"
+    ],
+    "question": "Return the phone numbers for all customers and suppliers.",
+    "question_toks": [
+      "Return",
+      "the",
+      "phone",
+      "numbers",
+      "for",
+      "all",
+      "customers",
+      "and",
+      "suppliers",
+      "."
+    ],
+    "sql": {
+      "from": {
+        "table_units": [
+          [
+            "table_unit",
+            4
+          ]
+        ],
+        "conds": []
+      },
+      "select": [
+        false,
+        [
+          [
+            0,
+            [
+              0,
+              [
+                0,
+                16,
+                false
+              ],
+              null
+            ]
+          ]
+        ]
+      ],
+      "where": [],
+      "groupBy": [],
+      "having": [],
+      "orderBy": [],
+      "limit": null,
+      "intersect": null,
+      "union": {
+        "from": {
+          "table_units": [
+            [
+              "table_unit",
+              2
+            ]
+          ],
+          "conds": []
+        },
+        "select": [
+          false,
+          [
+            [
+              0,
+              [
+                0,
+                [
+                  0,
+                  8,
+                  false
+                ],
+                null
+              ]
+            ]
+          ]
+        ],
+        "where": [],
+        "groupBy": [],
+        "having": [],
+        "orderBy": [],
+        "limit": null,
+        "intersect": null,
+        "union": null,
+        "except": null
+      },
+      "except": null
+    }
+  },
+  {
+    "db_id": "department_store",
+    "query": "SELECT customer_id ,  customer_name FROM customers WHERE customer_address LIKE \"%WY%\" AND payment_method_code != \"Credit Card\"",
+    "query_toks": [
+      "SELECT",
+      "customer_id",
+      ",",
+      "customer_name",
+      "FROM",
+      "customers",
+      "WHERE",
+      "customer_address",
+      "LIKE",
+      "``",
+      "%",
+      "WY",
+      "%",
+      "''",
+      "AND",
+      "payment_method_code",
+      "!",
+      "=",
+      "``",
+      "Credit",
+      "Card",
+      "''"
+    ],
+    "query_toks_no_value": [
+      "select",
+      "customer_id",
+      ",",
+      "customer_name",
+      "from",
+      "customers",
+      "where",
+      "customer_address",
+      "like",
+      "value",
+      "and",
+      "payment_method_code",
+      "!",
+      "=",
+      "value"
+    ],
+    "question": "Find the id and name of customers whose address contains WY state and do not use credit card for payment.",
+    "question_toks": [
+      "Find",
+      "the",
+      "id",
+      "and",
+      "name",
+      "of",
+      "customers",
+      "whose",
+      "address",
+      "contains",
+      "WY",
+      "state",
+      "and",
+      "do",
+      "not",
+      "use",
+      "credit",
+      "card",
+      "for",
+      "payment",
+      "."
+    ],
+    "sql": {
+      "from": {
+        "table_units": [
+          [
+            "table_unit",
+            4
+          ]
+        ],
+        "conds": []
+      },
+      "select": [
+        false,
+        [
+          [
+            0,
+            [
+              0,
+              [
+                0,
+                11,
+                false
+              ],
+              null
+            ]
+          ],
+          [
+            0,
+            [
+              0,
+              [
+                0,
+                14,
+                false
+              ],
+              null
+            ]
+          ]
+        ]
+      ],
+      "where": [
+        [
+          false,
+          9,
+          [
+            0,
+            [
+              0,
+              15,
+              false
+            ],
+            null
+          ],
+          "\"%WY%\"",
+          null
+        ],
+        "and",
+        [
+          false,
+          7,
+          [
+            0,
+            [
+              0,
+              12,
+              false
+            ],
+            null
+          ],
+          "\"Credit Card\"",
+          null
+        ]
+      ],
+      "groupBy": [],
+      "having": [],
+      "orderBy": [],
+      "limit": null,
+      "intersect": null,
+      "union": null,
+      "except": null
+    }
+  },
+  {
+    "db_id": "department_store",
+    "query": "SELECT T1.staff_name FROM staff AS T1 JOIN staff_department_assignments AS T2 ON T1.staff_id  =  T2.staff_id GROUP BY T2.staff_id HAVING COUNT (*)  >  1",
+    "query_toks": [
+      "SELECT",
+      "T1.staff_name",
+      "FROM",
+      "staff",
+      "AS",
+      "T1",
+      "JOIN",
+      "staff_department_assignments",
+      "AS",
+      "T2",
+      "ON",
+      "T1.staff_id",
+      "=",
+      "T2.staff_id",
+      "GROUP",
+      "BY",
+      "T2.staff_id",
+      "HAVING",
+      "COUNT",
+      "(",
+      "*",
+      ")",
+      ">",
+      "1"
+    ],
+    "query_toks_no_value": [
+      "select",
+      "t1",
+      ".",
+      "staff_name",
+      "from",
+      "staff",
+      "as",
+      "t1",
+      "join",
+      "staff_department_assignments",
+      "as",
+      "t2",
+      "on",
+      "t1",
+      ".",
+      "staff_id",
+      "=",
+      "t2",
+      ".",
+      "staff_id",
+      "group",
+      "by",
+      "t2",
+      ".",
+      "staff_id",
+      "having",
+      "count",
+      "(",
+      "*",
+      ")",
+      ">",
+      "value"
+    ],
+    "question": "What are the names of staff who have been assigned multiple jobs?",
+    "question_toks": [
+      "What",
+      "are",
+      "the",
+      "names",
+      "of",
+      "staff",
+      "who",
+      "have",
+      "been",
+      "assigned",
+      "multiple",
+      "jobs",
+      "?"
+    ],
+    "sql": {
+      "from": {
+        "table_units": [
+          [
+            "table_unit",
+            1
+          ],
+          [
+            "table_unit",
+            13
+          ]
+        ],
+        "conds": [
+          [
+            false,
+            2,
+            [
+              0,
+              [
+                0,
+                3,
+                false
+              ],
+              null
+            ],
+            [
+              0,
+              52,
+              false
+            ],
+            null
+          ]
+        ]
+      },
+      "select": [
+        false,
+        [
+          [
+            0,
+            [
+              0,
+              [
+                0,
+                5,
+                false
+              ],
+              null
+            ]
+          ]
+        ]
+      ],
+      "where": [],
+      "groupBy": [
+        [
+          0,
+          52,
+          false
+        ]
+      ],
+      "having": [
+        [
+          false,
+          3,
+          [
+            0,
+            [
+              3,
+              0,
+              false
+            ],
+            null
+          ],
+          1.0,
+          null
+        ]
+      ],
+      "orderBy": [],
+      "limit": null,
+      "intersect": null,
+      "union": null,
+      "except": null
+    }
+  },
+  {
+    "db_id": "department_store",
+    "query": "SELECT DISTINCT T1.customer_name FROM customers AS T1 JOIN customer_orders AS T2 ON T1.customer_id  =  T2.customer_id WHERE T2.order_status_code  =  \"Pending\" ORDER BY T2.customer_id",
+    "query_toks": [
+      "SELECT",
+      "DISTINCT",
+      "T1.customer_name",
+      "FROM",
+      "customers",
+      "AS",
+      "T1",
+      "JOIN",
+      "customer_orders",
+      "AS",
+      "T2",
+      "ON",
+      "T1.customer_id",
+      "=",
+      "T2.customer_id",
+      "WHERE",
+      "T2.order_status_code",
+      "=",
+      "``",
+      "Pending",
+      "''",
+      "ORDER",
+      "BY",
+      "T2.customer_id"
+    ],
+    "query_toks_no_value": [
+      "select",
+      "distinct",
+      "t1",
+      ".",
+      "customer_name",
+      "from",
+      "customers",
+      "as",
+      "t1",
+      "join",
+      "customer_orders",
+      "as",
+      "t2",
+      "on",
+      "t1",
+      ".",
+      "customer_id",
+      "=",
+      "t2",
+      ".",
+      "customer_id",
+      "where",
+      "t2",
+      ".",
+      "order_status_code",
+      "=",
+      "value",
+      "order",
+      "by",
+      "t2",
+      ".",
+      "customer_id"
+    ],
+    "question": "What are the distinct names of customers with an order status of Pending, sorted by customer id?",
+    "question_toks": [
+      "What",
+      "are",
+      "the",
+      "distinct",
+      "names",
+      "of",
+      "customers",
+      "with",
+      "an",
+      "order",
+      "status",
+      "of",
+      "Pending",
+      ",",
+      "sorted",
+      "by",
+      "customer",
+      "id",
+      "?"
+    ],
+    "sql": {
+      "from": {
+        "table_units": [
+          [
+            "table_unit",
+            4
+          ],
+          [
+            "table_unit",
+            8
+          ]
+        ],
+        "conds": [
+          [
+            false,
+            2,
+            [
+              0,
+              [
+                0,
+                11,
+                false
+              ],
+              null
+            ],
+            [
+              0,
+              31,
+              false
+            ],
+            null
+          ]
+        ]
+      },
+      "select": [
+        true,
+        [
+          [
+            0,
+            [
+              0,
+              [
+                0,
+                14,
+                false
+              ],
+              null
+            ]
+          ]
+        ]
+      ],
+      "where": [
+        [
+          false,
+          2,
+          [
+            0,
+            [
+              0,
+              32,
+              false
+            ],
+            null
+          ],
+          "\"Pending\"",
+          null
+        ]
+      ],
+      "groupBy": [],
+      "having": [],
+      "orderBy": [
+        "asc",
+        [
+          [
+            0,
+            [
+              0,
+              31,
+              false
+            ],
+            null
+          ]
+        ]
+      ],
+      "limit": null,
+      "intersect": null,
+      "union": null,
+      "except": null
+    }
+  },
+  {
+    "db_id": "department_store",
+    "query": "SELECT order_id ,  customer_id FROM customer_orders WHERE order_status_code  =   \"Cancelled\" ORDER BY order_date",
+    "query_toks": [
+      "SELECT",
+      "order_id",
+      ",",
+      "customer_id",
+      "FROM",
+      "customer_orders",
+      "WHERE",
+      "order_status_code",
+      "=",
+      "``",
+      "Cancelled",
+      "''",
+      "ORDER",
+      "BY",
+      "order_date"
+    ],
+    "query_toks_no_value": [
+      "select",
+      "order_id",
+      ",",
+      "customer_id",
+      "from",
+      "customer_orders",
+      "where",
+      "order_status_code",
+      "=",
+      "value",
+      "order",
+      "by",
+      "order_date"
+    ],
+    "question": "List the order id, customer id for orders in Cancelled status, ordered by their order dates.",
+    "question_toks": [
+      "List",
+      "the",
+      "order",
+      "id",
+      ",",
+      "customer",
+      "id",
+      "for",
+      "orders",
+      "in",
+      "Cancelled",
+      "status",
+      ",",
+      "ordered",
+      "by",
+      "their",
+      "order",
+      "dates",
+      "."
+    ],
+    "sql": {
+      "from": {
+        "table_units": [
+          [
+            "table_unit",
+            8
+          ]
+        ],
+        "conds": []
+      },
+      "select": [
+        false,
+        [
+          [
+            0,
+            [
+              0,
+              [
+                0,
+                30,
+                false
+              ],
+              null
+            ]
+          ],
+          [
+            0,
+            [
+              0,
+              [
+                0,
+                31,
+                false
+              ],
+              null
+            ]
+          ]
+        ]
+      ],
+      "where": [
+        [
+          false,
+          2,
+          [
+            0,
+            [
+              0,
+              32,
+              false
+            ],
+            null
+          ],
+          "\"Cancelled\"",
+          null
+        ]
+      ],
+      "groupBy": [],
+      "having": [],
+      "orderBy": [
+        "asc",
+        [
+          [
+            0,
+            [
+              0,
+              33,
+              false
+            ],
+            null
+          ]
+        ]
+      ],
+      "limit": null,
+      "intersect": null,
+      "union": null,
+      "except": null
+    }
+  },
+  {
+    "db_id": "department_store",
+    "query": "SELECT avg(total_amount_purchased) ,  avg(total_value_purchased) FROM Product_Suppliers WHERE supplier_id  =  (SELECT supplier_id FROM Product_Suppliers GROUP BY supplier_id ORDER BY count(*) DESC LIMIT 1)",
+    "query_toks": [
+      "SELECT",
+      "avg",
+      "(",
+      "total_amount_purchased",
+      ")",
+      ",",
+      "avg",
+      "(",
+      "total_value_purchased",
+      ")",
+      "FROM",
+      "Product_Suppliers",
+      "WHERE",
+      "supplier_id",
+      "=",
+      "(",
+      "SELECT",
+      "supplier_id",
+      "FROM",
+      "Product_Suppliers",
+      "GROUP",
+      "BY",
+      "supplier_id",
+      "ORDER",
+      "BY",
+      "count",
+      "(",
+      "*",
+      ")",
+      "DESC",
+      "LIMIT",
+      "1",
+      ")"
+    ],
+    "query_toks_no_value": [
+      "select",
+      "avg",
+      "(",
+      "total_amount_purchased",
+      ")",
+      ",",
+      "avg",
+      "(",
+      "total_value_purchased",
+      ")",
+      "from",
+      "product_suppliers",
+      "where",
+      "supplier_id",
+      "=",
+      "(",
+      "select",
+      "supplier_id",
+      "from",
+      "product_suppliers",
+      "group",
+      "by",
+      "supplier_id",
+      "order",
+      "by",
+      "count",
+      "(",
+      "*",
+      ")",
+      "desc",
+      "limit",
+      "value",
+      ")"
+    ],
+    "question": "What are the average amount purchased and value purchased for the supplier who supplies the most products.",
+    "question_toks": [
+      "What",
+      "are",
+      "the",
+      "average",
+      "amount",
+      "purchased",
+      "and",
+      "value",
+      "purchased",
+      "for",
+      "the",
+      "supplier",
+      "who",
+      "supplies",
+      "the",
+      "most",
+      "products",
+      "."
+    ],
+    "sql": {
+      "from": {
+        "table_units": [
+          [
+            "table_unit",
+            12
+          ]
+        ],
+        "conds": []
+      },
+      "select": [
+        false,
+        [
+          [
+            5,
+            [
+              0,
+              [
+                0,
+                50,
+                false
+              ],
+              null
+            ]
+          ],
+          [
+            5,
+            [
+              0,
+              [
+                0,
+                51,
+                false
+              ],
+              null
+            ]
+          ]
+        ]
+      ],
+      "where": [
+        [
+          false,
+          2,
+          [
+            0,
+            [
+              0,
+              47,
+              false
+            ],
+            null
+          ],
+          {
+            "from": {
+              "table_units": [
+                [
+                  "table_unit",
+                  12
+                ]
+              ],
+              "conds": []
+            },
+            "select": [
+              false,
+              [
+                [
+                  0,
+                  [
+                    0,
+                    [
+                      0,
+                      47,
+                      false
+                    ],
+                    null
+                  ]
+                ]
+              ]
+            ],
+            "where": [],
+            "groupBy": [
+              [
+                0,
+                47,
+                false
+              ]
+            ],
+            "having": [],
+            "orderBy": [
+              "desc",
+              [
+                [
+                  0,
+                  [
+                    3,
+                    0,
+                    false
+                  ],
+                  null
+                ]
+              ]
+            ],
+            "limit": 1,
+            "intersect": null,
+            "union": null,
+            "except": null
+          },
+          null
+        ]
+      ],
+      "groupBy": [],
+      "having": [],
+      "orderBy": [],
+      "limit": null,
+      "intersect": null,
+      "union": null,
+      "except": null
+    }
+  },
+  {
+    "db_id": "department_store",
+    "query": "SELECT T1.customer_name ,  T1.customer_address FROM customers AS T1 JOIN customer_orders AS T2 ON T1.customer_id  =  T2.customer_id WHERE T2.order_status_code  =  \"New\" INTERSECT SELECT T1.customer_name ,  T1.customer_address FROM customers AS T1 JOIN customer_orders AS T2 ON T1.customer_id  =  T2.customer_id WHERE T2.order_status_code  =  \"Pending\"",
+    "query_toks": [
+      "SELECT",
+      "T1.customer_name",
+      ",",
+      "T1.customer_address",
+      "FROM",
+      "customers",
+      "AS",
+      "T1",
+      "JOIN",
+      "customer_orders",
+      "AS",
+      "T2",
+      "ON",
+      "T1.customer_id",
+      "=",
+      "T2.customer_id",
+      "WHERE",
+      "T2.order_status_code",
+      "=",
+      "``",
+      "New",
+      "''",
+      "INTERSECT",
+      "SELECT",
+      "T1.customer_name",
+      ",",
+      "T1.customer_address",
+      "FROM",
+      "customers",
+      "AS",
+      "T1",
+      "JOIN",
+      "customer_orders",
+      "AS",
+      "T2",
+      "ON",
+      "T1.customer_id",
+      "=",
+      "T2.customer_id",
+      "WHERE",
+      "T2.order_status_code",
+      "=",
+      "``",
+      "Pending",
+      "''"
+    ],
+    "query_toks_no_value": [
+      "select",
+      "t1",
+      ".",
+      "customer_name",
+      ",",
+      "t1",
+      ".",
+      "customer_address",
+      "from",
+      "customers",
+      "as",
+      "t1",
+      "join",
+      "customer_orders",
+      "as",
+      "t2",
+      "on",
+      "t1",
+      ".",
+      "customer_id",
+      "=",
+      "t2",
+      ".",
+      "customer_id",
+      "where",
+      "t2",
+      ".",
+      "order_status_code",
+      "=",
+      "value",
+      "intersect",
+      "select",
+      "t1",
+      ".",
+      "customer_name",
+      ",",
+      "t1",
+      ".",
+      "customer_address",
+      "from",
+      "customers",
+      "as",
+      "t1",
+      "join",
+      "customer_orders",
+      "as",
+      "t2",
+      "on",
+      "t1",
+      ".",
+      "customer_id",
+      "=",
+      "t2",
+      ".",
+      "customer_id",
+      "where",
+      "t2",
+      ".",
+      "order_status_code",
+      "=",
+      "value"
+    ],
+    "question": "What are the names and addressed of customers who have both New and Pending orders?",
+    "question_toks": [
+      "What",
+      "are",
+      "the",
+      "names",
+      "and",
+      "addressed",
+      "of",
+      "customers",
+      "who",
+      "have",
+      "both",
+      "New",
+      "and",
+      "Pending",
+      "orders",
+      "?"
+    ],
+    "sql": {
+      "from": {
+        "table_units": [
+          [
+            "table_unit",
+            4
+          ],
+          [
+            "table_unit",
+            8
+          ]
+        ],
+        "conds": [
+          [
+            false,
+            2,
+            [
+              0,
+              [
+                0,
+                11,
+                false
+              ],
+              null
+            ],
+            [
+              0,
+              31,
+              false
+            ],
+            null
+          ]
+        ]
+      },
+      "select": [
+        false,
+        [
+          [
+            0,
+            [
+              0,
+              [
+                0,
+                14,
+                false
+              ],
+              null
+            ]
+          ],
+          [
+            0,
+            [
+              0,
+              [
+                0,
+                15,
+                false
+              ],
+              null
+            ]
+          ]
+        ]
+      ],
+      "where": [
+        [
+          false,
+          2,
+          [
+            0,
+            [
+              0,
+              32,
+              false
+            ],
+            null
+          ],
+          "\"New\"",
+          null
+        ]
+      ],
+      "groupBy": [],
+      "having": [],
+      "orderBy": [],
+      "limit": null,
+      "intersect": {
+        "from": {
+          "table_units": [
+            [
+              "table_unit",
+              4
+            ],
+            [
+              "table_unit",
+              8
+            ]
+          ],
+          "conds": [
+            [
+              false,
+              2,
+              [
+                0,
+                [
+                  0,
+                  11,
+                  false
+                ],
+                null
+              ],
+              [
+                0,
+                31,
+                false
+              ],
+              null
+            ]
+          ]
+        },
+        "select": [
+          false,
+          [
+            [
+              0,
+              [
+                0,
+                [
+                  0,
+                  14,
+                  false
+                ],
+                null
+              ]
+            ],
+            [
+              0,
+              [
+                0,
+                [
+                  0,
+                  15,
+                  false
+                ],
+                null
+              ]
+            ]
+          ]
+        ],
+        "where": [
+          [
+            false,
+            2,
+            [
+              0,
+              [
+                0,
+                32,
+                false
+              ],
+              null
+            ],
+            "\"Pending\"",
+            null
+          ]
+        ],
+        "groupBy": [],
+        "having": [],
+        "orderBy": [],
+        "limit": null,
+        "intersect": null,
+        "union": null,
+        "except": null
+      },
+      "union": null,
+      "except": null
+    }
+  },
+  {
+    "db_id": "department_store",
+    "query": "SELECT DISTINCT T1.customer_name FROM customers AS T1 JOIN customer_orders AS T2 ON T1.customer_id  =  T2.customer_id JOIN order_items AS T3 ON T2.order_id  =  T3.order_id GROUP BY T1.customer_id HAVING COUNT (DISTINCT T3.product_id)  >=  3",
+    "query_toks": [
+      "SELECT",
+      "DISTINCT",
+      "T1.customer_name",
+      "FROM",
+      "customers",
+      "AS",
+      "T1",
+      "JOIN",
+      "customer_orders",
+      "AS",
+      "T2",
+      "ON",
+      "T1.customer_id",
+      "=",
+      "T2.customer_id",
+      "JOIN",
+      "order_items",
+      "AS",
+      "T3",
+      "ON",
+      "T2.order_id",
+      "=",
+      "T3.order_id",
+      "GROUP",
+      "BY",
+      "T1.customer_id",
+      "HAVING",
+      "COUNT",
+      "(",
+      "DISTINCT",
+      "T3.product_id",
+      ")",
+      ">",
+      "=",
+      "3"
+    ],
+    "query_toks_no_value": [
+      "select",
+      "distinct",
+      "t1",
+      ".",
+      "customer_name",
+      "from",
+      "customers",
+      "as",
+      "t1",
+      "join",
+      "customer_orders",
+      "as",
+      "t2",
+      "on",
+      "t1",
+      ".",
+      "customer_id",
+      "=",
+      "t2",
+      ".",
+      "customer_id",
+      "join",
+      "order_items",
+      "as",
+      "t3",
+      "on",
+      "t2",
+      ".",
+      "order_id",
+      "=",
+      "t3",
+      ".",
+      "order_id",
+      "group",
+      "by",
+      "t1",
+      ".",
+      "customer_id",
+      "having",
+      "count",
+      "(",
+      "distinct",
+      "t3",
+      ".",
+      "product_id",
+      ")",
+      ">",
+      "=",
+      "value"
+    ],
+    "question": "Find the names of customers who have bought by at least three distinct products.",
+    "question_toks": [
+      "Find",
+      "the",
+      "names",
+      "of",
+      "customers",
+      "who",
+      "have",
+      "bought",
+      "by",
+      "at",
+      "least",
+      "three",
+      "distinct",
+      "products",
+      "."
+    ],
+    "sql": {
+      "from": {
+        "table_units": [
+          [
+            "table_unit",
+            4
+          ],
+          [
+            "table_unit",
+            8
+          ],
+          [
+            "table_unit",
+            11
+          ]
+        ],
+        "conds": [
+          [
+            false,
+            2,
+            [
+              0,
+              [
+                0,
+                11,
+                false
+              ],
+              null
+            ],
+            [
+              0,
+              31,
+              false
+            ],
+            null
+          ],
+          "and",
+          [
+            false,
+            2,
+            [
+              0,
+              [
+                0,
+                30,
+                false
+              ],
+              null
+            ],
+            [
+              0,
+              44,
+              false
+            ],
+            null
+          ]
+        ]
+      },
+      "select": [
+        true,
+        [
+          [
+            0,
+            [
+              0,
+              [
+                0,
+                14,
+                false
+              ],
+              null
+            ]
+          ]
+        ]
+      ],
+      "where": [],
+      "groupBy": [
+        [
+          0,
+          11,
+          false
+        ]
+      ],
+      "having": [
+        [
+          false,
+          5,
+          [
+            0,
+            [
+              3,
+              45,
+              true
+            ],
+            null
+          ],
+          3.0,
+          null
+        ]
+      ],
+      "orderBy": [],
+      "limit": null,
+      "intersect": null,
+      "union": null,
+      "except": null
+    }
+  },
+  {
+    "db_id": "department_store",
+    "query": "SELECT avg(product_price) FROM products WHERE product_type_code  =  'Clothes'",
+    "query_toks": [
+      "SELECT",
+      "avg",
+      "(",
+      "product_price",
+      ")",
+      "FROM",
+      "products",
+      "WHERE",
+      "product_type_code",
+      "=",
+      "'Clothes",
+      "'"
+    ],
+    "query_toks_no_value": [
+      "select",
+      "avg",
+      "(",
+      "product_price",
+      ")",
+      "from",
+      "products",
+      "where",
+      "product_type_code",
+      "=",
+      "value"
+    ],
+    "question": "What is the average price of clothes?",
+    "question_toks": [
+      "What",
+      "is",
+      "the",
+      "average",
+      "price",
+      "of",
+      "clothes",
+      "?"
+    ],
+    "sql": {
+      "from": {
+        "table_units": [
+          [
+            "table_unit",
+            5
+          ]
+        ],
+        "conds": []
+      },
+      "select": [
+        false,
+        [
+          [
+            5,
+            [
+              0,
+              [
+                0,
+                21,
+                false
+              ],
+              null
+            ]
+          ]
+        ]
+      ],
+      "where": [
+        [
+          false,
+          2,
+          [
+            0,
+            [
+              0,
+              19,
+              false
+            ],
+            null
+          ],
+          "\"Clothes\"",
+          null
+        ]
+      ],
+      "groupBy": [],
+      "having": [],
+      "orderBy": [],
+      "limit": null,
+      "intersect": null,
+      "union": null,
+      "except": null
+    }
+  },
+  {
+    "db_id": "department_store",
+    "query": "SELECT count(DISTINCT product_type_code) FROM products",
+    "query_toks": [
+      "SELECT",
+      "count",
+      "(",
+      "DISTINCT",
+      "product_type_code",
+      ")",
+      "FROM",
+      "products"
+    ],
+    "query_toks_no_value": [
+      "select",
+      "count",
+      "(",
+      "distinct",
+      "product_type_code",
+      ")",
+      "from",
+      "products"
+    ],
+    "question": "Find the number of different product types.",
+    "question_toks": [
+      "Find",
+      "the",
+      "number",
+      "of",
+      "different",
+      "product",
+      "types",
+      "."
+    ],
+    "sql": {
+      "from": {
+        "table_units": [
+          [
+            "table_unit",
+            5
+          ]
+        ],
+        "conds": []
+      },
+      "select": [
+        false,
+        [
+          [
+            3,
+            [
+              0,
+              [
+                0,
+                19,
+                true
+              ],
+              null
+            ]
+          ]
+        ]
+      ],
+      "where": [],
+      "groupBy": [],
+      "having": [],
+      "orderBy": [],
+      "limit": null,
+      "intersect": null,
+      "union": null,
+      "except": null
+    }
+  },
+  {
+    "db_id": "department_store",
+    "query": "SELECT order_id ,  customer_id FROM customer_orders WHERE order_status_code  =   \"Cancelled\" ORDER BY order_date",
+    "query_toks": [
+      "SELECT",
+      "order_id",
+      ",",
+      "customer_id",
+      "FROM",
+      "customer_orders",
+      "WHERE",
+      "order_status_code",
+      "=",
+      "``",
+      "Cancelled",
+      "''",
+      "ORDER",
+      "BY",
+      "order_date"
+    ],
+    "query_toks_no_value": [
+      "select",
+      "order_id",
+      ",",
+      "customer_id",
+      "from",
+      "customer_orders",
+      "where",
+      "order_status_code",
+      "=",
+      "value",
+      "order",
+      "by",
+      "order_date"
+    ],
+    "question": "What are the order ids and customer ids for orders that have been Cancelled, sorted by their order dates?",
+    "question_toks": [
+      "What",
+      "are",
+      "the",
+      "order",
+      "ids",
+      "and",
+      "customer",
+      "ids",
+      "for",
+      "orders",
+      "that",
+      "have",
+      "been",
+      "Cancelled",
+      ",",
+      "sorted",
+      "by",
+      "their",
+      "order",
+      "dates",
+      "?"
+    ],
+    "sql": {
+      "from": {
+        "table_units": [
+          [
+            "table_unit",
+            8
+          ]
+        ],
+        "conds": []
+      },
+      "select": [
+        false,
+        [
+          [
+            0,
+            [
+              0,
+              [
+                0,
+                30,
+                false
+              ],
+              null
+            ]
+          ],
+          [
+            0,
+            [
+              0,
+              [
+                0,
+                31,
+                false
+              ],
+              null
+            ]
+          ]
+        ]
+      ],
+      "where": [
+        [
+          false,
+          2,
+          [
+            0,
+            [
+              0,
+              32,
+              false
+            ],
+            null
+          ],
+          "\"Cancelled\"",
+          null
+        ]
+      ],
+      "groupBy": [],
+      "having": [],
+      "orderBy": [
+        "asc",
+        [
+          [
+            0,
+            [
+              0,
+              33,
+              false
+            ],
+            null
+          ]
+        ]
+      ],
+      "limit": null,
+      "intersect": null,
+      "union": null,
+      "except": null
+    }
+  },
+  {
+    "db_id": "department_store",
+    "query": "SELECT payment_method_code ,  count(*) FROM customers GROUP BY payment_method_code",
+    "query_toks": [
+      "SELECT",
+      "payment_method_code",
+      ",",
+      "count",
+      "(",
+      "*",
+      ")",
+      "FROM",
+      "customers",
+      "GROUP",
+      "BY",
+      "payment_method_code"
+    ],
+    "query_toks_no_value": [
+      "select",
+      "payment_method_code",
+      ",",
+      "count",
+      "(",
+      "*",
+      ")",
+      "from",
+      "customers",
+      "group",
+      "by",
+      "payment_method_code"
+    ],
+    "question": "How many customers use each payment method?",
+    "question_toks": [
+      "How",
+      "many",
+      "customers",
+      "use",
+      "each",
+      "payment",
+      "method",
+      "?"
+    ],
+    "sql": {
+      "from": {
+        "table_units": [
+          [
+            "table_unit",
+            4
+          ]
+        ],
+        "conds": []
+      },
+      "select": [
+        false,
+        [
+          [
+            0,
+            [
+              0,
+              [
+                0,
+                12,
+                false
+              ],
+              null
+            ]
+          ],
+          [
+            3,
+            [
+              0,
+              [
+                0,
+                0,
+                false
+              ],
+              null
+            ]
+          ]
+        ]
+      ],
+      "where": [],
+      "groupBy": [
+        [
+          0,
+          12,
+          false
+        ]
+      ],
+      "having": [],
+      "orderBy": [],
+      "limit": null,
+      "intersect": null,
+      "union": null,
+      "except": null
+    }
+  },
+  {
+    "db_id": "department_store",
+    "query": "SELECT DISTINCT T1.customer_name FROM customers AS T1 JOIN customer_orders AS T2 ON T1.customer_id  =  T2.customer_id JOIN order_items AS T3 ON T2.order_id  =  T3.order_id JOIN products AS T4 ON T3.product_id  =  T4.product_id WHERE T4.product_name  =  \"keyboard\"",
+    "query_toks": [
+      "SELECT",
+      "DISTINCT",
+      "T1.customer_name",
+      "FROM",
+      "customers",
+      "AS",
+      "T1",
+      "JOIN",
+      "customer_orders",
+      "AS",
+      "T2",
+      "ON",
+      "T1.customer_id",
+      "=",
+      "T2.customer_id",
+      "JOIN",
+      "order_items",
+      "AS",
+      "T3",
+      "ON",
+      "T2.order_id",
+      "=",
+      "T3.order_id",
+      "JOIN",
+      "products",
+      "AS",
+      "T4",
+      "ON",
+      "T3.product_id",
+      "=",
+      "T4.product_id",
+      "WHERE",
+      "T4.product_name",
+      "=",
+      "``",
+      "keyboard",
+      "''"
+    ],
+    "query_toks_no_value": [
+      "select",
+      "distinct",
+      "t1",
+      ".",
+      "customer_name",
+      "from",
+      "customers",
+      "as",
+      "t1",
+      "join",
+      "customer_orders",
+      "as",
+      "t2",
+      "on",
+      "t1",
+      ".",
+      "customer_id",
+      "=",
+      "t2",
+      ".",
+      "customer_id",
+      "join",
+      "order_items",
+      "as",
+      "t3",
+      "on",
+      "t2",
+      ".",
+      "order_id",
+      "=",
+      "t3",
+      ".",
+      "order_id",
+      "join",
+      "products",
+      "as",
+      "t4",
+      "on",
+      "t3",
+      ".",
+      "product_id",
+      "=",
+      "t4",
+      ".",
+      "product_id",
+      "where",
+      "t4",
+      ".",
+      "product_name",
+      "=",
+      "value"
+    ],
+    "question": "What are the distinct names of customers who have purchased a keyboard?",
+    "question_toks": [
+      "What",
+      "are",
+      "the",
+      "distinct",
+      "names",
+      "of",
+      "customers",
+      "who",
+      "have",
+      "purchased",
+      "a",
+      "keyboard",
+      "?"
+    ],
+    "sql": {
+      "from": {
+        "table_units": [
+          [
+            "table_unit",
+            4
+          ],
+          [
+            "table_unit",
+            8
+          ],
+          [
+            "table_unit",
+            11
+          ],
+          [
+            "table_unit",
+            5
+          ]
+        ],
+        "conds": [
+          [
+            false,
+            2,
+            [
+              0,
+              [
+                0,
+                11,
+                false
+              ],
+              null
+            ],
+            [
+              0,
+              31,
+              false
+            ],
+            null
+          ],
+          "and",
+          [
+            false,
+            2,
+            [
+              0,
+              [
+                0,
+                30,
+                false
+              ],
+              null
+            ],
+            [
+              0,
+              44,
+              false
+            ],
+            null
+          ],
+          "and",
+          [
+            false,
+            2,
+            [
+              0,
+              [
+                0,
+                45,
+                false
+              ],
+              null
+            ],
+            [
+              0,
+              18,
+              false
+            ],
+            null
+          ]
+        ]
+      },
+      "select": [
+        true,
+        [
+          [
+            0,
+            [
+              0,
+              [
+                0,
+                14,
+                false
+              ],
+              null
+            ]
+          ]
+        ]
+      ],
+      "where": [
+        [
+          false,
+          2,
+          [
+            0,
+            [
+              0,
+              20,
+              false
+            ],
+            null
+          ],
+          "\"keyboard\"",
+          null
+        ]
+      ],
+      "groupBy": [],
+      "having": [],
+      "orderBy": [],
+      "limit": null,
+      "intersect": null,
+      "union": null,
+      "except": null
+    }
+  },
+  {
+    "db_id": "department_store",
+    "query": "SELECT product_id FROM order_items GROUP BY product_id ORDER BY count(*) DESC LIMIT 1",
+    "query_toks": [
+      "SELECT",
+      "product_id",
+      "FROM",
+      "order_items",
+      "GROUP",
+      "BY",
+      "product_id",
+      "ORDER",
+      "BY",
+      "count",
+      "(",
+      "*",
+      ")",
+      "DESC",
+      "LIMIT",
+      "1"
+    ],
+    "query_toks_no_value": [
+      "select",
+      "product_id",
+      "from",
+      "order_items",
+      "group",
+      "by",
+      "product_id",
+      "order",
+      "by",
+      "count",
+      "(",
+      "*",
+      ")",
+      "desc",
+      "limit",
+      "value"
+    ],
+    "question": "Give the product id for the product that was ordered most frequently.",
+    "question_toks": [
+      "Give",
+      "the",
+      "product",
+      "id",
+      "for",
+      "the",
+      "product",
+      "that",
+      "was",
+      "ordered",
+      "most",
+      "frequently",
+      "."
+    ],
+    "sql": {
+      "from": {
+        "table_units": [
+          [
+            "table_unit",
+            11
+          ]
+        ],
+        "conds": []
+      },
+      "select": [
+        false,
+        [
+          [
+            0,
+            [
+              0,
+              [
+                0,
+                45,
+                false
+              ],
+              null
+            ]
+          ]
+        ]
+      ],
+      "where": [],
+      "groupBy": [
+        [
+          0,
+          45,
+          false
+        ]
+      ],
+      "having": [],
+      "orderBy": [
+        "desc",
+        [
+          [
+            0,
+            [
+              3,
+              0,
+              false
+            ],
+            null
+          ]
+        ]
+      ],
+      "limit": 1,
+      "intersect": null,
+      "union": null,
+      "except": null
+    }
+  },
+  {
+    "db_id": "department_store",
+    "query": "SELECT product_type_code ,  avg(product_price) FROM products GROUP BY product_type_code",
+    "query_toks": [
+      "SELECT",
+      "product_type_code",
+      ",",
+      "avg",
+      "(",
+      "product_price",
+      ")",
+      "FROM",
+      "products",
+      "GROUP",
+      "BY",
+      "product_type_code"
+    ],
+    "query_toks_no_value": [
+      "select",
+      "product_type_code",
+      ",",
+      "avg",
+      "(",
+      "product_price",
+      ")",
+      "from",
+      "products",
+      "group",
+      "by",
+      "product_type_code"
+    ],
+    "question": "Return the average price for each product type.",
+    "question_toks": [
+      "Return",
+      "the",
+      "average",
+      "price",
+      "for",
+      "each",
+      "product",
+      "type",
+      "."
+    ],
+    "sql": {
+      "from": {
+        "table_units": [
+          [
+            "table_unit",
+            5
+          ]
+        ],
+        "conds": []
+      },
+      "select": [
+        false,
+        [
+          [
+            0,
+            [
+              0,
+              [
+                0,
+                19,
+                false
+              ],
+              null
+            ]
+          ],
+          [
+            5,
+            [
+              0,
+              [
+                0,
+                21,
+                false
+              ],
+              null
+            ]
+          ]
+        ]
+      ],
+      "where": [],
+      "groupBy": [
+        [
+          0,
+          19,
+          false
+        ]
+      ],
+      "having": [],
+      "orderBy": [],
+      "limit": null,
+      "intersect": null,
+      "union": null,
+      "except": null
+    }
+  },
+  {
+    "db_id": "department_store",
+    "query": "SELECT T1.product_id FROM product_suppliers AS T1 JOIN products AS T2 ON T1.product_id  =  T2.product_id WHERE T1.supplier_id  =  2 AND T2.product_price  >  (SELECT avg(product_price) FROM products)",
+    "query_toks": [
+      "SELECT",
+      "T1.product_id",
+      "FROM",
+      "product_suppliers",
+      "AS",
+      "T1",
+      "JOIN",
+      "products",
+      "AS",
+      "T2",
+      "ON",
+      "T1.product_id",
+      "=",
+      "T2.product_id",
+      "WHERE",
+      "T1.supplier_id",
+      "=",
+      "2",
+      "AND",
+      "T2.product_price",
+      ">",
+      "(",
+      "SELECT",
+      "avg",
+      "(",
+      "product_price",
+      ")",
+      "FROM",
+      "products",
+      ")"
+    ],
+    "query_toks_no_value": [
+      "select",
+      "t1",
+      ".",
+      "product_id",
+      "from",
+      "product_suppliers",
+      "as",
+      "t1",
+      "join",
+      "products",
+      "as",
+      "t2",
+      "on",
+      "t1",
+      ".",
+      "product_id",
+      "=",
+      "t2",
+      ".",
+      "product_id",
+      "where",
+      "t1",
+      ".",
+      "supplier_id",
+      "=",
+      "value",
+      "and",
+      "t2",
+      ".",
+      "product_price",
+      ">",
+      "(",
+      "select",
+      "avg",
+      "(",
+      "product_price",
+      ")",
+      "from",
+      "products",
+      ")"
+    ],
+    "question": "Return ids of all the products that are supplied by supplier id 2 and are more expensive than the average price of all products.",
+    "question_toks": [
+      "Return",
+      "ids",
+      "of",
+      "all",
+      "the",
+      "products",
+      "that",
+      "are",
+      "supplied",
+      "by",
+      "supplier",
+      "id",
+      "2",
+      "and",
+      "are",
+      "more",
+      "expensive",
+      "than",
+      "the",
+      "average",
+      "price",
+      "of",
+      "all",
+      "products",
+      "."
+    ],
+    "sql": {
+      "from": {
+        "table_units": [
+          [
+            "table_unit",
+            12
+          ],
+          [
+            "table_unit",
+            5
+          ]
+        ],
+        "conds": [
+          [
+            false,
+            2,
+            [
+              0,
+              [
+                0,
+                46,
+                false
+              ],
+              null
+            ],
+            [
+              0,
+              18,
+              false
+            ],
+            null
+          ]
+        ]
+      },
+      "select": [
+        false,
+        [
+          [
+            0,
+            [
+              0,
+              [
+                0,
+                46,
+                false
+              ],
+              null
+            ]
+          ]
+        ]
+      ],
+      "where": [
+        [
+          false,
+          2,
+          [
+            0,
+            [
+              0,
+              47,
+              false
+            ],
+            null
+          ],
+          2.0,
+          null
+        ],
+        "and",
+        [
+          false,
+          3,
+          [
+            0,
+            [
+              0,
+              21,
+              false
+            ],
+            null
+          ],
+          {
+            "from": {
+              "table_units": [
+                [
+                  "table_unit",
+                  5
+                ]
+              ],
+              "conds": []
+            },
+            "select": [
+              false,
+              [
+                [
+                  5,
+                  [
+                    0,
+                    [
+                      0,
+                      21,
+                      false
+                    ],
+                    null
+                  ]
+                ]
+              ]
+            ],
+            "where": [],
+            "groupBy": [],
+            "having": [],
+            "orderBy": [],
+            "limit": null,
+            "intersect": null,
+            "union": null,
+            "except": null
+          },
+          null
+        ]
+      ],
+      "groupBy": [],
+      "having": [],
+      "orderBy": [],
+      "limit": null,
+      "intersect": null,
+      "union": null,
+      "except": null
+    }
+  },
+  {
+    "db_id": "department_store",
+    "query": "SELECT T2.dept_store_id ,  T2.store_name FROM departments AS T1 JOIN department_stores AS T2 ON T1.dept_store_id  =  T2.dept_store_id WHERE T1.department_name  =  \"marketing\" INTERSECT SELECT T2.dept_store_id ,  T2.store_name FROM departments AS T1 JOIN department_stores AS T2 ON T1.dept_store_id  =  T2.dept_store_id WHERE T1.department_name  =  \"managing\"",
+    "query_toks": [
+      "SELECT",
+      "T2.dept_store_id",
+      ",",
+      "T2.store_name",
+      "FROM",
+      "departments",
+      "AS",
+      "T1",
+      "JOIN",
+      "department_stores",
+      "AS",
+      "T2",
+      "ON",
+      "T1.dept_store_id",
+      "=",
+      "T2.dept_store_id",
+      "WHERE",
+      "T1.department_name",
+      "=",
+      "``",
+      "marketing",
+      "''",
+      "INTERSECT",
+      "SELECT",
+      "T2.dept_store_id",
+      ",",
+      "T2.store_name",
+      "FROM",
+      "departments",
+      "AS",
+      "T1",
+      "JOIN",
+      "department_stores",
+      "AS",
+      "T2",
+      "ON",
+      "T1.dept_store_id",
+      "=",
+      "T2.dept_store_id",
+      "WHERE",
+      "T1.department_name",
+      "=",
+      "``",
+      "managing",
+      "''"
+    ],
+    "query_toks_no_value": [
+      "select",
+      "t2",
+      ".",
+      "dept_store_id",
+      ",",
+      "t2",
+      ".",
+      "store_name",
+      "from",
+      "departments",
+      "as",
+      "t1",
+      "join",
+      "department_stores",
+      "as",
+      "t2",
+      "on",
+      "t1",
+      ".",
+      "dept_store_id",
+      "=",
+      "t2",
+      ".",
+      "dept_store_id",
+      "where",
+      "t1",
+      ".",
+      "department_name",
+      "=",
+      "value",
+      "intersect",
+      "select",
+      "t2",
+      ".",
+      "dept_store_id",
+      ",",
+      "t2",
+      ".",
+      "store_name",
+      "from",
+      "departments",
+      "as",
+      "t1",
+      "join",
+      "department_stores",
+      "as",
+      "t2",
+      "on",
+      "t1",
+      ".",
+      "dept_store_id",
+      "=",
+      "t2",
+      ".",
+      "dept_store_id",
+      "where",
+      "t1",
+      ".",
+      "department_name",
+      "=",
+      "value"
+    ],
+    "question": "What are the ids and names of department stores with both marketing and managing departments?",
+    "question_toks": [
+      "What",
+      "are",
+      "the",
+      "ids",
+      "and",
+      "names",
+      "of",
+      "department",
+      "stores",
+      "with",
+      "both",
+      "marketing",
+      "and",
+      "managing",
+      "departments",
+      "?"
+    ],
+    "sql": {
+      "from": {
+        "table_units": [
+          [
+            "table_unit",
+            10
+          ],
+          [
+            "table_unit",
+            9
+          ]
+        ],
+        "conds": [
+          [
+            false,
+            2,
+            [
+              0,
+              [
+                0,
+                41,
+                false
+              ],
+              null
+            ],
+            [
+              0,
+              34,
+              false
+            ],
+            null
+          ]
+        ]
+      },
+      "select": [
+        false,
+        [
+          [
+            0,
+            [
+              0,
+              [
+                0,
+                34,
+                false
+              ],
+              null
+            ]
+          ],
+          [
+            0,
+            [
+              0,
+              [
+                0,
+                36,
+                false
+              ],
+              null
+            ]
+          ]
+        ]
+      ],
+      "where": [
+        [
+          false,
+          2,
+          [
+            0,
+            [
+              0,
+              42,
+              false
+            ],
+            null
+          ],
+          "\"marketing\"",
+          null
+        ]
+      ],
+      "groupBy": [],
+      "having": [],
+      "orderBy": [],
+      "limit": null,
+      "intersect": {
+        "from": {
+          "table_units": [
+            [
+              "table_unit",
+              10
+            ],
+            [
+              "table_unit",
+              9
+            ]
+          ],
+          "conds": [
+            [
+              false,
+              2,
+              [
+                0,
+                [
+                  0,
+                  41,
+                  false
+                ],
+                null
+              ],
+              [
+                0,
+                34,
+                false
+              ],
+              null
+            ]
+          ]
+        },
+        "select": [
+          false,
+          [
+            [
+              0,
+              [
+                0,
+                [
+                  0,
+                  34,
+                  false
+                ],
+                null
+              ]
+            ],
+            [
+              0,
+              [
+                0,
+                [
+                  0,
+                  36,
+                  false
+                ],
+                null
+              ]
+            ]
+          ]
+        ],
+        "where": [
+          [
+            false,
+            2,
+            [
+              0,
+              [
+                0,
+                42,
+                false
+              ],
+              null
+            ],
+            "\"managing\"",
+            null
+          ]
+        ],
+        "groupBy": [],
+        "having": [],
+        "orderBy": [],
+        "limit": null,
+        "intersect": null,
+        "union": null,
+        "except": null
+      },
+      "union": null,
+      "except": null
+    }
+  },
+  {
+    "db_id": "department_store",
+    "query": "SELECT department_id FROM staff_department_assignments GROUP BY department_id ORDER BY count(*) LIMIT 1",
+    "query_toks": [
+      "SELECT",
+      "department_id",
+      "FROM",
+      "staff_department_assignments",
+      "GROUP",
+      "BY",
+      "department_id",
+      "ORDER",
+      "BY",
+      "count",
+      "(",
+      "*",
+      ")",
+      "LIMIT",
+      "1"
+    ],
+    "query_toks_no_value": [
+      "select",
+      "department_id",
+      "from",
+      "staff_department_assignments",
+      "group",
+      "by",
+      "department_id",
+      "order",
+      "by",
+      "count",
+      "(",
+      "*",
+      ")",
+      "limit",
+      "value"
+    ],
+    "question": "Return the id of the department with the fewest staff assignments.",
+    "question_toks": [
+      "Return",
+      "the",
+      "id",
+      "of",
+      "the",
+      "department",
+      "with",
+      "the",
+      "fewest",
+      "staff",
+      "assignments",
+      "."
+    ],
+    "sql": {
+      "from": {
+        "table_units": [
+          [
+            "table_unit",
+            13
+          ]
+        ],
+        "conds": []
+      },
+      "select": [
+        false,
+        [
+          [
+            0,
+            [
+              0,
+              [
+                0,
+                53,
+                false
+              ],
+              null
+            ]
+          ]
+        ]
+      ],
+      "where": [],
+      "groupBy": [
+        [
+          0,
+          53,
+          false
+        ]
+      ],
+      "having": [],
+      "orderBy": [
+        "asc",
+        [
+          [
+            0,
+            [
+              3,
+              0,
+              false
+            ],
+            null
+          ]
+        ]
+      ],
+      "limit": 1,
+      "intersect": null,
+      "union": null,
+      "except": null
+    }
+  },
+  {
+    "db_id": "department_store",
+    "query": "SELECT product_id ,  product_type_code FROM products ORDER BY product_price LIMIT 1",
+    "query_toks": [
+      "SELECT",
+      "product_id",
+      ",",
+      "product_type_code",
+      "FROM",
+      "products",
+      "ORDER",
+      "BY",
+      "product_price",
+      "LIMIT",
+      "1"
+    ],
+    "query_toks_no_value": [
+      "select",
+      "product_id",
+      ",",
+      "product_type_code",
+      "from",
+      "products",
+      "order",
+      "by",
+      "product_price",
+      "limit",
+      "value"
+    ],
+    "question": "Give the id and product type of the product with the lowest price.",
+    "question_toks": [
+      "Give",
+      "the",
+      "id",
+      "and",
+      "product",
+      "type",
+      "of",
+      "the",
+      "product",
+      "with",
+      "the",
+      "lowest",
+      "price",
+      "."
+    ],
+    "sql": {
+      "from": {
+        "table_units": [
+          [
+            "table_unit",
+            5
+          ]
+        ],
+        "conds": []
+      },
+      "select": [
+        false,
+        [
+          [
+            0,
+            [
+              0,
+              [
+                0,
+                18,
+                false
+              ],
+              null
+            ]
+          ],
+          [
+            0,
+            [
+              0,
+              [
+                0,
+                19,
+                false
+              ],
+              null
+            ]
+          ]
+        ]
+      ],
+      "where": [],
+      "groupBy": [],
+      "having": [],
+      "orderBy": [
+        "asc",
+        [
+          [
+            0,
+            [
+              0,
+              21,
+              false
+            ],
+            null
+          ]
+        ]
+      ],
+      "limit": 1,
+      "intersect": null,
+      "union": null,
+      "except": null
+    }
+  },
+  {
+    "db_id": "department_store",
+    "query": "SELECT T1.customer_name ,  T1.customer_phone ,  T1.customer_email FROM customers AS T1 JOIN customer_orders AS T2 ON T1.customer_id  =  T2.customer_id GROUP BY T2.customer_id ORDER BY count(*) DESC LIMIT 1",
+    "query_toks": [
+      "SELECT",
+      "T1.customer_name",
+      ",",
+      "T1.customer_phone",
+      ",",
+      "T1.customer_email",
+      "FROM",
+      "customers",
+      "AS",
+      "T1",
+      "JOIN",
+      "customer_orders",
+      "AS",
+      "T2",
+      "ON",
+      "T1.customer_id",
+      "=",
+      "T2.customer_id",
+      "GROUP",
+      "BY",
+      "T2.customer_id",
+      "ORDER",
+      "BY",
+      "count",
+      "(",
+      "*",
+      ")",
+      "DESC",
+      "LIMIT",
+      "1"
+    ],
+    "query_toks_no_value": [
+      "select",
+      "t1",
+      ".",
+      "customer_name",
+      ",",
+      "t1",
+      ".",
+      "customer_phone",
+      ",",
+      "t1",
+      ".",
+      "customer_email",
+      "from",
+      "customers",
+      "as",
+      "t1",
+      "join",
+      "customer_orders",
+      "as",
+      "t2",
+      "on",
+      "t1",
+      ".",
+      "customer_id",
+      "=",
+      "t2",
+      ".",
+      "customer_id",
+      "group",
+      "by",
+      "t2",
+      ".",
+      "customer_id",
+      "order",
+      "by",
+      "count",
+      "(",
+      "*",
+      ")",
+      "desc",
+      "limit",
+      "value"
+    ],
+    "question": "What are the name, phone number and email address of the customer who made the largest number of orders?",
+    "question_toks": [
+      "What",
+      "are",
+      "the",
+      "name",
+      ",",
+      "phone",
+      "number",
+      "and",
+      "email",
+      "address",
+      "of",
+      "the",
+      "customer",
+      "who",
+      "made",
+      "the",
+      "largest",
+      "number",
+      "of",
+      "orders",
+      "?"
+    ],
+    "sql": {
+      "from": {
+        "table_units": [
+          [
+            "table_unit",
+            4
+          ],
+          [
+            "table_unit",
+            8
+          ]
+        ],
+        "conds": [
+          [
+            false,
+            2,
+            [
+              0,
+              [
+                0,
+                11,
+                false
+              ],
+              null
+            ],
+            [
+              0,
+              31,
+              false
+            ],
+            null
+          ]
+        ]
+      },
+      "select": [
+        false,
+        [
+          [
+            0,
+            [
+              0,
+              [
+                0,
+                14,
+                false
+              ],
+              null
+            ]
+          ],
+          [
+            0,
+            [
+              0,
+              [
+                0,
+                16,
+                false
+              ],
+              null
+            ]
+          ],
+          [
+            0,
+            [
+              0,
+              [
+                0,
+                17,
+                false
+              ],
+              null
+            ]
+          ]
+        ]
+      ],
+      "where": [],
+      "groupBy": [
+        [
+          0,
+          31,
+          false
+        ]
+      ],
+      "having": [],
+      "orderBy": [
+        "desc",
+        [
+          [
+            0,
+            [
+              3,
+              0,
+              false
+            ],
+            null
+          ]
+        ]
+      ],
+      "limit": 1,
+      "intersect": null,
+      "union": null,
+      "except": null
+    }
+  },
+  {
+    "db_id": "department_store",
+    "query": "SELECT T1.staff_name ,  T1.staff_gender FROM staff AS T1 JOIN Staff_Department_Assignments AS T2 ON T1.staff_id  =  T2.staff_id WHERE T2.job_title_code  =  \"Sales Person\" EXCEPT SELECT T1.staff_name ,  T1.staff_gender FROM staff AS T1 JOIN Staff_Department_Assignments AS T2 ON T1.staff_id  =  T2.staff_id WHERE T2.job_title_code  =  \"Clerical Staff\"",
+    "query_toks": [
+      "SELECT",
+      "T1.staff_name",
+      ",",
+      "T1.staff_gender",
+      "FROM",
+      "staff",
+      "AS",
+      "T1",
+      "JOIN",
+      "Staff_Department_Assignments",
+      "AS",
+      "T2",
+      "ON",
+      "T1.staff_id",
+      "=",
+      "T2.staff_id",
+      "WHERE",
+      "T2.job_title_code",
+      "=",
+      "``",
+      "Sales",
+      "Person",
+      "''",
+      "EXCEPT",
+      "SELECT",
+      "T1.staff_name",
+      ",",
+      "T1.staff_gender",
+      "FROM",
+      "staff",
+      "AS",
+      "T1",
+      "JOIN",
+      "Staff_Department_Assignments",
+      "AS",
+      "T2",
+      "ON",
+      "T1.staff_id",
+      "=",
+      "T2.staff_id",
+      "WHERE",
+      "T2.job_title_code",
+      "=",
+      "``",
+      "Clerical",
+      "Staff",
+      "''"
+    ],
+    "query_toks_no_value": [
+      "select",
+      "t1",
+      ".",
+      "staff_name",
+      ",",
+      "t1",
+      ".",
+      "staff_gender",
+      "from",
+      "staff",
+      "as",
+      "t1",
+      "join",
+      "staff_department_assignments",
+      "as",
+      "t2",
+      "on",
+      "t1",
+      ".",
+      "staff_id",
+      "=",
+      "t2",
+      ".",
+      "staff_id",
+      "where",
+      "t2",
+      ".",
+      "job_title_code",
+      "=",
+      "value",
+      "except",
+      "select",
+      "t1",
+      ".",
+      "staff_name",
+      ",",
+      "t1",
+      ".",
+      "staff_gender",
+      "from",
+      "staff",
+      "as",
+      "t1",
+      "join",
+      "staff_department_assignments",
+      "as",
+      "t2",
+      "on",
+      "t1",
+      ".",
+      "staff_id",
+      "=",
+      "t2",
+      ".",
+      "staff_id",
+      "where",
+      "t2",
+      ".",
+      "job_title_code",
+      "=",
+      "value"
+    ],
+    "question": "What are the names and genders of staff who have held the title Sales Person, but never Clerical Staff?",
+    "question_toks": [
+      "What",
+      "are",
+      "the",
+      "names",
+      "and",
+      "genders",
+      "of",
+      "staff",
+      "who",
+      "have",
+      "held",
+      "the",
+      "title",
+      "Sales",
+      "Person",
+      ",",
+      "but",
+      "never",
+      "Clerical",
+      "Staff",
+      "?"
+    ],
+    "sql": {
+      "from": {
+        "table_units": [
+          [
+            "table_unit",
+            1
+          ],
+          [
+            "table_unit",
+            13
+          ]
+        ],
+        "conds": [
+          [
+            false,
+            2,
+            [
+              0,
+              [
+                0,
+                3,
+                false
+              ],
+              null
+            ],
+            [
+              0,
+              52,
+              false
+            ],
+            null
+          ]
+        ]
+      },
+      "select": [
+        false,
+        [
+          [
+            0,
+            [
+              0,
+              [
+                0,
+                5,
+                false
+              ],
+              null
+            ]
+          ],
+          [
+            0,
+            [
+              0,
+              [
+                0,
+                4,
+                false
+              ],
+              null
+            ]
+          ]
+        ]
+      ],
+      "where": [
+        [
+          false,
+          2,
+          [
+            0,
+            [
+              0,
+              55,
+              false
+            ],
+            null
+          ],
+          "\"Sales Person\"",
+          null
+        ]
+      ],
+      "groupBy": [],
+      "having": [],
+      "orderBy": [],
+      "limit": null,
+      "intersect": null,
+      "union": null,
+      "except": {
+        "from": {
+          "table_units": [
+            [
+              "table_unit",
+              1
+            ],
+            [
+              "table_unit",
+              13
+            ]
+          ],
+          "conds": [
+            [
+              false,
+              2,
+              [
+                0,
+                [
+                  0,
+                  3,
+                  false
+                ],
+                null
+              ],
+              [
+                0,
+                52,
+                false
+              ],
+              null
+            ]
+          ]
+        },
+        "select": [
+          false,
+          [
+            [
+              0,
+              [
+                0,
+                [
+                  0,
+                  5,
+                  false
+                ],
+                null
+              ]
+            ],
+            [
+              0,
+              [
+                0,
+                [
+                  0,
+                  4,
+                  false
+                ],
+                null
+              ]
+            ]
+          ]
+        ],
+        "where": [
+          [
+            false,
+            2,
+            [
+              0,
+              [
+                0,
+                55,
+                false
+              ],
+              null
+            ],
+            "\"Clerical Staff\"",
+            null
+          ]
+        ],
+        "groupBy": [],
+        "having": [],
+        "orderBy": [],
+        "limit": null,
+        "intersect": null,
+        "union": null,
+        "except": null
+      }
+    }
+  },
+  {
+    "db_id": "department_store",
+    "question": "What are the names and genders of staff who are currently assigned to a department?",
+    "query": "SELECT T1.staff_name, T1.staff_gender FROM staff AS T1 JOIN Staff_Department_Assignments AS T2 ON T1.staff_id = T2.staff_id WHERE T2.date_assigned_to IS NULL",
+    "query_toks": [
+      "SELECT",
+      "T1.staff_name",
+      ",",
+      "T1.staff_gender",
+      "FROM",
+      "staff",
+      "AS",
+      "T1",
+      "JOIN",
+      "Staff_Department_Assignments",
+      "AS",
+      "T2",
+      "ON",
+      "T1.staff_id",
+      "=",
+      "T2.staff_id",
+      "WHERE",
+      "T2.date_assigned_to",
+      "IS",
+      "NULL"
+    ],
+    "query_toks_no_value": [
+      "select",
+      "t1",
+      ".",
+      "staff_name",
+      ",",
+      "t1",
+      ".",
+      "staff_gender",
+      "from",
+      "staff",
+      "as",
+      "t1",
+      "join",
+      "staff_department_assignments",
+      "as",
+      "t2",
+      "on",
+      "t1",
+      ".",
+      "staff_id",
+      "=",
+      "t2",
+      ".",
+      "staff_id",
+      "where",
+      "t2",
+      ".",
+      "date_assigned_to",
+      "is",
+      "null"
+    ],
+    "question_toks": [
+      "What",
+      "are",
+      "the",
+      "names",
+      "and",
+      "genders",
+      "of",
+      "staff",
+      "who",
+      "are",
+      "currently",
+      "assigned",
+      "to",
+      "a",
+      "department",
+      "?"
+    ],
+    "sql": {
+      "from": {
+        "table_units": [
+          [
+            "table_unit",
+            1
+          ],
+          [
+            "table_unit",
+            13
+          ]
+        ],
+        "conds": [
+          [
+            false,
+            2,
+            [
+              0,
+              [
+                0,
+                3,
+                false
+              ],
+              null
+            ],
+            [
+              0,
+              52,
+              false
+            ],
+            null
+          ]
+        ]
+      },
+      "select": [
+        false,
+        [
+          [
+            0,
+            [
+              0,
+              [
+                0,
+                5,
+                false
+              ],
+              null
+            ]
+          ],
+          [
+            0,
+            [
+              0,
+              [
+                0,
+                4,
+                false
+              ],
+              null
+            ]
+          ]
+        ]
+      ],
+      "where": [
+        [
+          false,
+          8,
+          [
+            0,
+            [
+              0,
+              56,
+              false
+            ],
+            null
+          ],
+          null,
+          null
+        ]
+      ],
+      "groupBy": [],
+      "having": [],
+      "orderBy": [],
+      "limit": null,
+      "intersect": null,
+      "union": null,
+      "except": null
+    }
+  },
+  {
+    "db_id": "department_store",
+    "question": "What is the average price of products for each product type?",
+    "query": "SELECT product_type_code, AVG(product_price) FROM products GROUP BY product_type_code",
+    "query_toks": [
+      "SELECT",
+      "product_type_code",
+      ",",
+      "AVG",
+      "(",
+      "product_price",
+      ")",
+      "FROM",
+      "products",
+      "GROUP",
+      "BY",
+      "product_type_code"
+    ],
+    "query_toks_no_value": [
+      "select",
+      "product_type_code",
+      ",",
+      "avg",
+      "(",
+      "product_price",
+      ")",
+      "from",
+      "products",
+      "group",
+      "by",
+      "product_type_code"
+    ],
+    "question_toks": [
+      "What",
+      "is",
+      "the",
+      "average",
+      "price",
+      "of",
+      "products",
+      "for",
+      "each",
+      "product",
+      "type",
+      "?"
+    ],
+    "sql": {
+      "from": {
+        "table_units": [
+          [
+            "table_unit",
+            5
+          ]
+        ],
+        "conds": []
+      },
+      "select": [
+        false,
+        [
+          [
+            0,
+            [
+              0,
+              [
+                0,
+                20,
+                false
+              ],
+              null
+            ]
+          ],
+          [
+            5,
+            [
+              0,
+              [
+                0,
+                22,
+                false
+              ],
+              null
+            ]
+          ]
+        ]
+      ],
+      "where": [],
+      "groupBy": [
+        [
+          0,
+          20,
+          false
+        ]
+      ],
+      "having": [],
+      "orderBy": [],
+      "limit": null,
+      "intersect": null,
+      "union": null,
+      "except": null
+    }
+  },
+  {
+    "db_id": "department_store",
+    "question": "How many distinct products does each supplier currently supply?",
+    "query": "SELECT T1.supplier_name, COUNT(DISTINCT T2.product_id) FROM Suppliers AS T1 JOIN Product_Suppliers AS T2 ON T1.supplier_id = T2.supplier_id WHERE T2.date_supplied_to IS NULL GROUP BY T1.supplier_id",
+    "query_toks": [
+      "SELECT",
+      "T1.supplier_name",
+      ",",
+      "COUNT",
+      "(",
+      "DISTINCT",
+      "T2.product_id",
+      ")",
+      "FROM",
+      "Suppliers",
+      "AS",
+      "T1",
+      "JOIN",
+      "Product_Suppliers",
+      "AS",
+      "T2",
+      "ON",
+      "T1.supplier_id",
+      "=",
+      "T2.supplier_id",
+      "WHERE",
+      "T2.date_supplied_to",
+      "IS",
+      "NULL",
+      "GROUP",
+      "BY",
+      "T1.supplier_id"
+    ],
+    "query_toks_no_value": [
+      "select",
+      "t1",
+      ".",
+      "supplier_name",
+      ",",
+      "count",
+      "(",
+      "distinct",
+      "t2",
+      ".",
+      "product_id",
+      ")",
+      "from",
+      "suppliers",
+      "as",
+      "t1",
+      "join",
+      "product_suppliers",
+      "as",
+      "t2",
+      "on",
+      "t1",
+      ".",
+      "supplier_id",
+      "=",
+      "t2",
+      ".",
+      "supplier_id",
+      "where",
+      "t2",
+      ".",
+      "date_supplied_to",
+      "is",
+      "null",
+      "group",
+      "by",
+      "t1",
+      ".",
+      "supplier_id"
+    ],
+    "question_toks": [
+      "How",
+      "many",
+      "distinct",
+      "products",
+      "does",
+      "each",
+      "supplier",
+      "currently",
+      "supply",
+      "?"
+    ],
+    "sql": {
+      "from": {
+        "table_units": [
+          [
+            "table_unit",
+            7
+          ],
+          [
+            "table_unit",
+            8
+          ]
+        ],
+        "conds": [
+          [
+            false,
+            2,
+            [
+              0,
+              [
+                0,
+                30,
+                false
+              ],
+              null
+            ],
+            [
+              0,
+              33,
+              false
+            ],
+            null
+          ]
+        ]
+      },
+      "select": [
+        false,
+        [
+          [
+            0,
+            [
+              0,
+              [
+                0,
+                31,
+                false
+              ],
+              null
+            ]
+          ],
+          [
+            3,
+            [
+              1,
+              [
+                0,
+                34,
+                false
+              ],
+              null
+            ]
+          ]
+        ]
+      ],
+      "where": [
+        [
+          false,
+          8,
+          [
+            0,
+            [
+              0,
+              37,
+              false
+            ],
+            null
+          ],
+          null,
+          null
+        ]
+      ],
+      "groupBy": [
+        [
+          0,
+          30,
+          false
+        ]
+      ],
+      "having": [],
+      "orderBy": [],
+      "limit": null,
+      "intersect": null,
+      "union": null,
+      "except": null
+    }
+  },
+  {
+    "db_id": "department_store",
+    "question": "What are the names of staff who have been assigned to more than one department?",
+    "query": "SELECT T1.staff_name FROM staff AS T1 JOIN Staff_Department_Assignments AS T2 ON T1.staff_id = T2.staff_id GROUP BY T1.staff_id HAVING COUNT(DISTINCT T2.department_id) > 1",
+    "query_toks": [
+      "SELECT",
+      "T1.staff_name",
+      "FROM",
+      "staff",
+      "AS",
+      "T1",
+      "JOIN",
+      "Staff_Department_Assignments",
+      "AS",
+      "T2",
+      "ON",
+      "T1.staff_id",
+      "=",
+      "T2.staff_id",
+      "GROUP",
+      "BY",
+      "T1.staff_id",
+      "HAVING",
+      "COUNT",
+      "(",
+      "DISTINCT",
+      "T2.department_id",
+      ")",
+      ">",
+      "1"
+    ],
+    "query_toks_no_value": [
+      "select",
+      "t1",
+      ".",
+      "staff_name",
+      "from",
+      "staff",
+      "as",
+      "t1",
+      "join",
+      "staff_department_assignments",
+      "as",
+      "t2",
+      "on",
+      "t1",
+      ".",
+      "staff_id",
+      "=",
+      "t2",
+      ".",
+      "staff_id",
+      "group",
+      "by",
+      "t1",
+      ".",
+      "staff_id",
+      "having",
+      "count",
+      "(",
+      "distinct",
+      "t2",
+      ".",
+      "department_id",
+      ")",
+      ">",
+      "value"
+    ],
+    "question_toks": [
+      "What",
+      "are",
+      "the",
+      "names",
+      "of",
+      "staff",
+      "who",
+      "have",
+      "been",
+      "assigned",
+      "to",
+      "more",
+      "than",
+      "one",
+      "department",
+      "?"
+    ],
+    "sql": {
+      "from": {
+        "table_units": [
+          [
+            "table_unit",
+            1
+          ],
+          [
+            "table_unit",
+            13
+          ]
+        ],
+        "conds": [
+          [
+            false,
+            2,
+            [
+              0,
+              [
+                0,
+                3,
+                false
+              ],
+              null
+            ],
+            [
+              0,
+              52,
+              false
+            ],
+            null
+          ]
+        ]
+      },
+      "select": [
+        false,
+        [
+          [
+            0,
+            [
+              0,
+              [
+                0,
+                5,
+                false
+              ],
+              null
+            ]
+          ]
+        ]
+      ],
+      "where": [],
+      "groupBy": [
+        [
+          0,
+          3,
+          false
+        ]
+      ],
+      "having": [
+        [
+          false,
+          4,
+          [
+            3,
+            [
+              1,
+              [
+                0,
+                53,
+                false
+              ],
+              null
+            ]
+          ],
+          1,
+          null
+        ]
+      ],
+      "orderBy": [],
+      "limit": null,
+      "intersect": null,
+      "union": null,
+      "except": null
+    }
+  },
+  {
+    "db_id": "department_store",
+    "question": "Find the total purchase value for each product and return the product name along with the total.",
+    "query": "SELECT T1.product_name, SUM(T2.total_value_purchased) FROM products AS T1 JOIN Product_Suppliers AS T2 ON T1.product_id = T2.product_id GROUP BY T1.product_id",
+    "query_toks": [
+      "SELECT",
+      "T1.product_name",
+      ",",
+      "SUM",
+      "(",
+      "T2.total_value_purchased",
+      ")",
+      "FROM",
+      "products",
+      "AS",
+      "T1",
+      "JOIN",
+      "Product_Suppliers",
+      "AS",
+      "T2",
+      "ON",
+      "T1.product_id",
+      "=",
+      "T2.product_id",
+      "GROUP",
+      "BY",
+      "T1.product_id"
+    ],
+    "query_toks_no_value": [
+      "select",
+      "t1",
+      ".",
+      "product_name",
+      ",",
+      "sum",
+      "(",
+      "t2",
+      ".",
+      "total_value_purchased",
+      ")",
+      "from",
+      "products",
+      "as",
+      "t1",
+      "join",
+      "product_suppliers",
+      "as",
+      "t2",
+      "on",
+      "t1",
+      ".",
+      "product_id",
+      "=",
+      "t2",
+      ".",
+      "product_id",
+      "group",
+      "by",
+      "t1",
+      ".",
+      "product_id"
+    ],
+    "question_toks": [
+      "Find",
+      "the",
+      "total",
+      "purchase",
+      "value",
+      "for",
+      "each",
+      "product",
+      "and",
+      "return",
+      "the",
+      "product",
+      "name",
+      "along",
+      "with",
+      "the",
+      "total",
+      "."
+    ],
+    "sql": {
+      "from": {
+        "table_units": [
+          [
+            "table_unit",
+            5
+          ],
+          [
+            "table_unit",
+            8
+          ]
+        ],
+        "conds": [
+          [
+            false,
+            2,
+            [
+              0,
+              [
+                0,
+                19,
+                false
+              ],
+              null
+            ],
+            [
+              0,
+              34,
+              false
+            ],
+            null
+          ]
+        ]
+      },
+      "select": [
+        false,
+        [
+          [
+            0,
+            [
+              0,
+              [
+                0,
+                21,
+                false
+              ],
+              null
+            ]
+          ],
+          [
+            4,
+            [
+              0,
+              [
+                0,
+                38,
+                false
+              ],
+              null
+            ]
+          ]
+        ]
+      ],
+      "where": [],
+      "groupBy": [
+        [
+          0,
+          19,
+          false
+        ]
+      ],
+      "having": [],
+      "orderBy": [],
+      "limit": null,
+      "intersect": null,
+      "union": null,
+      "except": null
+    }
+  },
+  {
+    "db_id": "department_store",
+    "question": "Which staff have held the title of Manager but have never been assigned to department 1?",
+    "query": "SELECT T1.staff_name FROM staff AS T1 JOIN Staff_Department_Assignments AS T2 ON T1.staff_id = T2.staff_id WHERE T2.job_title_code = \"Manager\" EXCEPT SELECT T1.staff_name FROM staff AS T1 JOIN Staff_Department_Assignments AS T2 ON T1.staff_id = T2.staff_id WHERE T2.department_id = 1",
+    "query_toks": [
+      "SELECT",
+      "T1.staff_name",
+      "FROM",
+      "staff",
+      "AS",
+      "T1",
+      "JOIN",
+      "Staff_Department_Assignments",
+      "AS",
+      "T2",
+      "ON",
+      "T1.staff_id",
+      "=",
+      "T2.staff_id",
+      "WHERE",
+      "T2.job_title_code",
+      "=",
+      "\"Manager\"",
+      "EXCEPT",
+      "SELECT",
+      "T1.staff_name",
+      "FROM",
+      "staff",
+      "AS",
+      "T1",
+      "JOIN",
+      "Staff_Department_Assignments",
+      "AS",
+      "T2",
+      "ON",
+      "T1.staff_id",
+      "=",
+      "T2.staff_id",
+      "WHERE",
+      "T2.department_id",
+      "=",
+      "1"
+    ],
+    "query_toks_no_value": [
+      "select",
+      "t1",
+      ".",
+      "staff_name",
+      "from",
+      "staff",
+      "as",
+      "t1",
+      "join",
+      "staff_department_assignments",
+      "as",
+      "t2",
+      "on",
+      "t1",
+      ".",
+      "staff_id",
+      "=",
+      "t2",
+      ".",
+      "staff_id",
+      "where",
+      "t2",
+      ".",
+      "job_title_code",
+      "=",
+      "value",
+      "except",
+      "select",
+      "t1",
+      ".",
+      "staff_name",
+      "from",
+      "staff",
+      "as",
+      "t1",
+      "join",
+      "staff_department_assignments",
+      "as",
+      "t2",
+      "on",
+      "t1",
+      ".",
+      "staff_id",
+      "=",
+      "t2",
+      ".",
+      "staff_id",
+      "where",
+      "t2",
+      ".",
+      "department_id",
+      "=",
+      "value"
+    ],
+    "question_toks": [
+      "Which",
+      "staff",
+      "have",
+      "held",
+      "the",
+      "title",
+      "of",
+      "Manager",
+      "but",
+      "have",
+      "never",
+      "been",
+      "assigned",
+      "to",
+      "department",
+      "1",
+      "?"
+    ],
+    "sql": {
+      "from": {
+        "table_units": [
+          [
+            "table_unit",
+            1
+          ],
+          [
+            "table_unit",
+            13
+          ]
+        ],
+        "conds": [
+          [
+            false,
+            2,
+            [
+              0,
+              [
+                0,
+                3,
+                false
+              ],
+              null
+            ],
+            [
+              0,
+              52,
+              false
+            ],
+            null
+          ]
+        ]
+      },
+      "select": [
+        false,
+        [
+          [
+            0,
+            [
+              0,
+              [
+                0,
+                5,
+                false
+              ],
+              null
+            ]
+          ]
+        ]
+      ],
+      "where": [
+        [
+          false,
+          2,
+          [
+            0,
+            [
+              0,
+              55,
+              false
+            ],
+            null
+          ],
+          "\"Manager\"",
+          null
+        ]
+      ],
+      "groupBy": [],
+      "having": [],
+      "orderBy": [],
+      "limit": null,
+      "intersect": null,
+      "union": null,
+      "except": {
+        "from": {
+          "table_units": [
+            [
+              "table_unit",
+              1
+            ],
+            [
+              "table_unit",
+              13
+            ]
+          ],
+          "conds": [
+            [
+              false,
+              2,
+              [
+                0,
+                [
+                  0,
+                  3,
+                  false
+                ],
+                null
+              ],
+              [
+                0,
+                52,
+                false
+              ],
+              null
+            ]
+          ]
+        },
+        "select": [
+          false,
+          [
+            [
+              0,
+              [
+                0,
+                [
+                  0,
+                  5,
+                  false
+                ],
+                null
+              ]
+            ]
+          ]
+        ],
+        "where": [
+          [
+            false,
+            2,
+            [
+              0,
+              [
+                0,
+                53,
+                false
+              ],
+              null
+            ],
+            1,
+            null
+          ]
+        ],
+        "groupBy": [],
+        "having": [],
+        "orderBy": [],
+        "limit": null,
+        "intersect": null,
+        "union": null,
+        "except": null
+      }
+    }
+  },
+  {
+    "db_id": "department_store",
+    "question": "How many staff members are there in total?",
+    "query": "SELECT COUNT(*) FROM staff",
+    "query_toks": [
+      "SELECT",
+      "COUNT",
+      "(",
+      "*",
+      ")",
+      "FROM",
+      "staff"
+    ],
+    "query_toks_no_value": [
+      "select",
+      "count",
+      "(",
+      "*",
+      ")",
+      "from",
+      "staff"
+    ],
+    "question_toks": [
+      "How",
+      "many",
+      "staff",
+      "members",
+      "are",
+      "there",
+      "in",
+      "total",
+      "?"
+    ],
+    "sql": {
+      "from": {
+        "table_units": [
+          [
+            "table_unit",
+            1
+          ]
+        ],
+        "conds": []
+      },
+      "select": [
+        false,
+        [
+          [
+            3,
+            [
+              0,
+              [
+                0,
+                0,
+                false
+              ],
+              null
+            ]
+          ]
+        ]
+      ],
+      "where": [],
+      "groupBy": [],
+      "having": [],
+      "orderBy": [],
+      "limit": null,
+      "intersect": null,
+      "union": null,
+      "except": null
+    }
+  },
+  {
+    "db_id": "department_store",
+    "question": "What is the maximum and minimum product price?",
+    "query": "SELECT MAX(product_price), MIN(product_price) FROM products",
+    "query_toks": [
+      "SELECT",
+      "MAX",
+      "(",
+      "product_price",
+      ")",
+      ",",
+      "MIN",
+      "(",
+      "product_price",
+      ")",
+      "FROM",
+      "products"
+    ],
+    "query_toks_no_value": [
+      "select",
+      "max",
+      "(",
+      "product_price",
+      ")",
+      ",",
+      "min",
+      "(",
+      "product_price",
+      ")",
+      "from",
+      "products"
+    ],
+    "question_toks": [
+      "What",
+      "is",
+      "the",
+      "maximum",
+      "and",
+      "minimum",
+      "product",
+      "price",
+      "?"
+    ],
+    "sql": {
+      "from": {
+        "table_units": [
+          [
+            "table_unit",
+            5
+          ]
+        ],
+        "conds": []
+      },
+      "select": [
+        false,
+        [
+          [
+            1,
+            [
+              0,
+              [
+                0,
+                22,
+                false
+              ],
+              null
+            ]
+          ],
+          [
+            2,
+            [
+              0,
+              [
+                0,
+                22,
+                false
+              ],
+              null
+            ]
+          ]
+        ]
+      ],
+      "where": [],
+      "groupBy": [],
+      "having": [],
+      "orderBy": [],
+      "limit": null,
+      "intersect": null,
+      "union": null,
+      "except": null
+    }
+  },
+  {
+    "db_id": "department_store",
+    "question": "List all department names and the number of staff currently working in each department.",
+    "query": "SELECT T1.department_name, COUNT(DISTINCT T2.staff_id) FROM Departments AS T1 JOIN Staff_Department_Assignments AS T2 ON T1.department_id = T2.department_id WHERE T2.date_assigned_to IS NULL GROUP BY T1.department_id",
+    "query_toks": [
+      "SELECT",
+      "T1.department_name",
+      ",",
+      "COUNT",
+      "(",
+      "DISTINCT",
+      "T2.staff_id",
+      ")",
+      "FROM",
+      "Departments",
+      "AS",
+      "T1",
+      "JOIN",
+      "Staff_Department_Assignments",
+      "AS",
+      "T2",
+      "ON",
+      "T1.department_id",
+      "=",
+      "T2.department_id",
+      "WHERE",
+      "T2.date_assigned_to",
+      "IS",
+      "NULL",
+      "GROUP",
+      "BY",
+      "T1.department_id"
+    ],
+    "query_toks_no_value": [
+      "select",
+      "t1",
+      ".",
+      "department_name",
+      ",",
+      "count",
+      "(",
+      "distinct",
+      "t2",
+      ".",
+      "staff_id",
+      ")",
+      "from",
+      "departments",
+      "as",
+      "t1",
+      "join",
+      "staff_department_assignments",
+      "as",
+      "t2",
+      "on",
+      "t1",
+      ".",
+      "department_id",
+      "=",
+      "t2",
+      ".",
+      "department_id",
+      "where",
+      "t2",
+      ".",
+      "date_assigned_to",
+      "is",
+      "null",
+      "group",
+      "by",
+      "t1",
+      ".",
+      "department_id"
+    ],
+    "question_toks": [
+      "List",
+      "all",
+      "department",
+      "names",
+      "and",
+      "the",
+      "number",
+      "of",
+      "staff",
+      "currently",
+      "working",
+      "in",
+      "each",
+      "department",
+      "."
+    ],
+    "sql": {
+      "from": {
+        "table_units": [
+          [
+            "table_unit",
+            6
+          ],
+          [
+            "table_unit",
+            13
+          ]
+        ],
+        "conds": [
+          [
+            false,
+            2,
+            [
+              0,
+              [
+                0,
+                25,
+                false
+              ],
+              null
+            ],
+            [
+              0,
+              53,
+              false
+            ],
+            null
+          ]
+        ]
+      },
+      "select": [
+        false,
+        [
+          [
+            0,
+            [
+              0,
+              [
+                0,
+                26,
+                false
+              ],
+              null
+            ]
+          ],
+          [
+            3,
+            [
+              1,
+              [
+                0,
+                52,
+                false
+              ],
+              null
+            ]
+          ]
+        ]
+      ],
+      "where": [
+        [
+          false,
+          8,
+          [
+            0,
+            [
+              0,
+              56,
+              false
+            ],
+            null
+          ],
+          null,
+          null
+        ]
+      ],
+      "groupBy": [
+        [
+          0,
+          25,
+          false
+        ]
+      ],
+      "having": [],
+      "orderBy": [],
+      "limit": null,
+      "intersect": null,
+      "union": null,
+      "except": null
+    }
+  },
+  {
+    "db_id": "department_store",
+    "question": "What are the names of all products with a price greater than 100?",
+    "query": "SELECT product_name FROM products WHERE product_price > 100",
+    "query_toks": [
+      "SELECT",
+      "product_name",
+      "FROM",
+      "products",
+      "WHERE",
+      "product_price",
+      ">",
+      "100"
+    ],
+    "query_toks_no_value": [
+      "select",
+      "product_name",
+      "from",
+      "products",
+      "where",
+      "product_price",
+      ">",
+      "value"
+    ],
+    "question_toks": [
+      "What",
+      "are",
+      "the",
+      "names",
+      "of",
+      "all",
+      "products",
+      "with",
+      "a",
+      "price",
+      "greater",
+      "than",
+      "100",
+      "?"
+    ],
+    "sql": {
+      "from": {
+        "table_units": [
+          [
+            "table_unit",
+            5
+          ]
+        ],
+        "conds": []
+      },
+      "select": [
+        false,
+        [
+          [
+            0,
+            [
+              0,
+              [
+                0,
+                21,
+                false
+              ],
+              null
+            ]
+          ]
+        ]
+      ],
+      "where": [
+        [
+          false,
+          4,
+          [
+            0,
+            [
+              0,
+              22,
+              false
+            ],
+            null
+          ],
+          100,
+          null
+        ]
+      ],
+      "groupBy": [],
+      "having": [],
+      "orderBy": [],
+      "limit": null,
+      "intersect": null,
+      "union": null,
+      "except": null
+    }
+  },
+  {
+    "db_id": "department_store",
+    "question": "How many orders have been placed by each customer?",
+    "query": "SELECT customer_id, COUNT(order_id) FROM Customer_Orders GROUP BY customer_id",
+    "query_toks": [
+      "SELECT",
+      "customer_id",
+      ",",
+      "COUNT",
+      "(",
+      "order_id",
+      ")",
+      "FROM",
+      "Customer_Orders",
+      "GROUP",
+      "BY",
+      "customer_id"
+    ],
+    "query_toks_no_value": [
+      "select",
+      "customer_id",
+      ",",
+      "count",
+      "(",
+      "order_id",
+      ")",
+      "from",
+      "customer_orders",
+      "group",
+      "by",
+      "customer_id"
+    ],
+    "question_toks": [
+      "How",
+      "many",
+      "orders",
+      "have",
+      "been",
+      "placed",
+      "by",
+      "each",
+      "customer",
+      "?"
+    ],
+    "sql": {
+      "from": {
+        "table_units": [
+          [
+            "table_unit",
+            3
+          ]
+        ],
+        "conds": []
+      },
+      "select": [
+        false,
+        [
+          [
+            0,
+            [
+              0,
+              [
+                0,
+                11,
+                false
+              ],
+              null
+            ]
+          ],
+          [
+            3,
+            [
+              0,
+              [
+                0,
+                12,
+                false
+              ],
+              null
+            ]
+          ]
+        ]
+      ],
+      "where": [],
+      "groupBy": [
+        [
+          0,
+          11,
+          false
+        ]
+      ],
+      "having": [],
+      "orderBy": [],
+      "limit": null,
+      "intersect": null,
+      "union": null,
+      "except": null
+    }
+  },
+  {
+    "db_id": "department_store",
+    "question": "What is the average number of items per order?",
+    "query": "SELECT AVG(item_count) FROM (SELECT order_id, COUNT(*) AS item_count FROM Order_Items GROUP BY order_id)",
+    "query_toks": [
+      "SELECT",
+      "AVG",
+      "(",
+      "item_count",
+      ")",
+      "FROM",
+      "(",
+      "SELECT",
+      "order_id",
+      ",",
+      "COUNT",
+      "(",
+      "*",
+      ")",
+      "AS",
+      "item_count",
+      "FROM",
+      "Order_Items",
+      "GROUP",
+      "BY",
+      "order_id",
+      ")"
+    ],
+    "query_toks_no_value": [
+      "select",
+      "avg",
+      "(",
+      "item_count",
+      ")",
+      "from",
+      "(",
+      "select",
+      "order_id",
+      ",",
+      "count",
+      "(",
+      "*",
+      ")",
+      "as",
+      "item_count",
+      "from",
+      "order_items",
+      "group",
+      "by",
+      "order_id",
+      ")"
+    ],
+    "question_toks": [
+      "What",
+      "is",
+      "the",
+      "average",
+      "number",
+      "of",
+      "items",
+      "per",
+      "order",
+      "?"
+    ],
+    "sql": {
+      "from": {
+        "table_units": [
+          [
+            "table_unit",
+            4
+          ]
+        ],
+        "conds": []
+      },
+      "select": [
+        false,
+        [
+          [
+            5,
+            [
+              0,
+              [
+                0,
+                -1,
+                false
+              ],
+              null
+            ]
+          ]
+        ]
+      ],
+      "where": [],
+      "groupBy": [],
+      "having": [],
+      "orderBy": [],
+      "limit": null,
+      "intersect": null,
+      "union": null,
+      "except": null
+    }
+  },
+  {
+    "db_id": "department_store",
+    "question": "Which customers have placed more than 3 orders?",
+    "query": "SELECT customer_id FROM Customer_Orders GROUP BY customer_id HAVING COUNT(order_id) > 3",
+    "query_toks": [
+      "SELECT",
+      "customer_id",
+      "FROM",
+      "Customer_Orders",
+      "GROUP",
+      "BY",
+      "customer_id",
+      "HAVING",
+      "COUNT",
+      "(",
+      "order_id",
+      ")",
+      ">",
+      "3"
+    ],
+    "query_toks_no_value": [
+      "select",
+      "customer_id",
+      "from",
+      "customer_orders",
+      "group",
+      "by",
+      "customer_id",
+      "having",
+      "count",
+      "(",
+      "order_id",
+      ")",
+      ">",
+      "value"
+    ],
+    "question_toks": [
+      "Which",
+      "customers",
+      "have",
+      "placed",
+      "more",
+      "than",
+      "3",
+      "orders",
+      "?"
+    ],
+    "sql": {
+      "from": {
+        "table_units": [
+          [
+            "table_unit",
+            3
+          ]
+        ],
+        "conds": []
+      },
+      "select": [
+        false,
+        [
+          [
+            0,
+            [
+              0,
+              [
+                0,
+                11,
+                false
+              ],
+              null
+            ]
+          ]
+        ]
+      ],
+      "where": [],
+      "groupBy": [
+        [
+          0,
+          11,
+          false
+        ]
+      ],
+      "having": [
+        [
+          false,
+          4,
+          [
+            3,
+            [
+              0,
+              [
+                0,
+                12,
+                false
+              ],
+              null
+            ]
+          ],
+          3,
+          null
+        ]
+      ],
+      "orderBy": [],
+      "limit": null,
+      "intersect": null,
+      "union": null,
+      "except": null
+    }
+  },
+  {
+    "db_id": "department_store",
+    "question": "What are the top 5 most expensive products?",
+    "query": "SELECT product_name, product_price FROM products ORDER BY product_price DESC LIMIT 5",
+    "query_toks": [
+      "SELECT",
+      "product_name",
+      ",",
+      "product_price",
+      "FROM",
+      "products",
+      "ORDER",
+      "BY",
+      "product_price",
+      "DESC",
+      "LIMIT",
+      "5"
+    ],
+    "query_toks_no_value": [
+      "select",
+      "product_name",
+      ",",
+      "product_price",
+      "from",
+      "products",
+      "order",
+      "by",
+      "product_price",
+      "desc",
+      "limit",
+      "value"
+    ],
+    "question_toks": [
+      "What",
+      "are",
+      "the",
+      "top",
+      "5",
+      "most",
+      "expensive",
+      "products",
+      "?"
+    ],
+    "sql": {
+      "from": {
+        "table_units": [
+          [
+            "table_unit",
+            5
+          ]
+        ],
+        "conds": []
+      },
+      "select": [
+        false,
+        [
+          [
+            0,
+            [
+              0,
+              [
+                0,
+                21,
+                false
+              ],
+              null
+            ]
+          ],
+          [
+            0,
+            [
+              0,
+              [
+                0,
+                22,
+                false
+              ],
+              null
+            ]
+          ]
+        ]
+      ],
+      "where": [],
+      "groupBy": [],
+      "having": [],
+      "orderBy": [
+        "desc",
+        [
+          [
+            0,
+            [
+              0,
+              22,
+              false
+            ],
+            null
+          ]
+        ]
+      ],
+      "limit": 5,
+      "intersect": null,
+      "union": null,
+      "except": null
+    }
+  },
+  {
+    "db_id": "department_store",
+    "question": "List the names of all suppliers who supply products of type Furniture.",
+    "query": "SELECT DISTINCT T1.supplier_name FROM Suppliers AS T1 JOIN Product_Suppliers AS T2 ON T1.supplier_id = T2.supplier_id JOIN products AS T3 ON T2.product_id = T3.product_id WHERE T3.product_type_code = \"Furniture\"",
+    "query_toks": [
+      "SELECT",
+      "DISTINCT",
+      "T1.supplier_name",
+      "FROM",
+      "Suppliers",
+      "AS",
+      "T1",
+      "JOIN",
+      "Product_Suppliers",
+      "AS",
+      "T2",
+      "ON",
+      "T1.supplier_id",
+      "=",
+      "T2.supplier_id",
+      "JOIN",
+      "products",
+      "AS",
+      "T3",
+      "ON",
+      "T2.product_id",
+      "=",
+      "T3.product_id",
+      "WHERE",
+      "T3.product_type_code",
+      "=",
+      "\"Furniture\""
+    ],
+    "query_toks_no_value": [
+      "select",
+      "distinct",
+      "t1",
+      ".",
+      "supplier_name",
+      "from",
+      "suppliers",
+      "as",
+      "t1",
+      "join",
+      "product_suppliers",
+      "as",
+      "t2",
+      "on",
+      "t1",
+      ".",
+      "supplier_id",
+      "=",
+      "t2",
+      ".",
+      "supplier_id",
+      "join",
+      "products",
+      "as",
+      "t3",
+      "on",
+      "t2",
+      ".",
+      "product_id",
+      "=",
+      "t3",
+      ".",
+      "product_id",
+      "where",
+      "t3",
+      ".",
+      "product_type_code",
+      "=",
+      "value"
+    ],
+    "question_toks": [
+      "List",
+      "the",
+      "names",
+      "of",
+      "all",
+      "suppliers",
+      "who",
+      "supply",
+      "products",
+      "of",
+      "type",
+      "Furniture",
+      "."
+    ],
+    "sql": {
+      "from": {
+        "table_units": [
+          [
+            "table_unit",
+            7
+          ],
+          [
+            "table_unit",
+            8
+          ],
+          [
+            "table_unit",
+            5
+          ]
+        ],
+        "conds": [
+          [
+            false,
+            2,
+            [
+              0,
+              [
+                0,
+                30,
+                false
+              ],
+              null
+            ],
+            [
+              0,
+              33,
+              false
+            ],
+            null
+          ],
+          "and",
+          [
+            false,
+            2,
+            [
+              0,
+              [
+                0,
+                34,
+                false
+              ],
+              null
+            ],
+            [
+              0,
+              19,
+              false
+            ],
+            null
+          ]
+        ]
+      },
+      "select": [
+        false,
+        [
+          [
+            0,
+            [
+              0,
+              [
+                0,
+                31,
+                false
+              ],
+              null
+            ]
+          ]
+        ]
+      ],
+      "where": [
+        [
+          false,
+          2,
+          [
+            0,
+            [
+              0,
+              20,
+              false
+            ],
+            null
+          ],
+          "\"Furniture\"",
+          null
+        ]
+      ],
+      "groupBy": [],
+      "having": [],
+      "orderBy": [],
+      "limit": null,
+      "intersect": null,
+      "union": null,
+      "except": null
+    }
+  },
+  {
+    "db_id": "department_store",
+    "question": "What are the names of staff who have held both Sales Person and Manager titles?",
+    "query": "SELECT T1.staff_name FROM staff AS T1 JOIN Staff_Department_Assignments AS T2 ON T1.staff_id = T2.staff_id WHERE T2.job_title_code = \"Sales Person\" INTERSECT SELECT T1.staff_name FROM staff AS T1 JOIN Staff_Department_Assignments AS T2 ON T1.staff_id = T2.staff_id WHERE T2.job_title_code = \"Manager\"",
+    "query_toks": [
+      "SELECT",
+      "T1.staff_name",
+      "FROM",
+      "staff",
+      "AS",
+      "T1",
+      "JOIN",
+      "Staff_Department_Assignments",
+      "AS",
+      "T2",
+      "ON",
+      "T1.staff_id",
+      "=",
+      "T2.staff_id",
+      "WHERE",
+      "T2.job_title_code",
+      "=",
+      "\"Sales Person\"",
+      "INTERSECT",
+      "SELECT",
+      "T1.staff_name",
+      "FROM",
+      "staff",
+      "AS",
+      "T1",
+      "JOIN",
+      "Staff_Department_Assignments",
+      "AS",
+      "T2",
+      "ON",
+      "T1.staff_id",
+      "=",
+      "T2.staff_id",
+      "WHERE",
+      "T2.job_title_code",
+      "=",
+      "\"Manager\""
+    ],
+    "query_toks_no_value": [
+      "select",
+      "t1",
+      ".",
+      "staff_name",
+      "from",
+      "staff",
+      "as",
+      "t1",
+      "join",
+      "staff_department_assignments",
+      "as",
+      "t2",
+      "on",
+      "t1",
+      ".",
+      "staff_id",
+      "=",
+      "t2",
+      ".",
+      "staff_id",
+      "where",
+      "t2",
+      ".",
+      "job_title_code",
+      "=",
+      "value",
+      "intersect",
+      "select",
+      "t1",
+      ".",
+      "staff_name",
+      "from",
+      "staff",
+      "as",
+      "t1",
+      "join",
+      "staff_department_assignments",
+      "as",
+      "t2",
+      "on",
+      "t1",
+      ".",
+      "staff_id",
+      "=",
+      "t2",
+      ".",
+      "staff_id",
+      "where",
+      "t2",
+      ".",
+      "job_title_code",
+      "=",
+      "value"
+    ],
+    "question_toks": [
+      "What",
+      "are",
+      "the",
+      "names",
+      "of",
+      "staff",
+      "who",
+      "have",
+      "held",
+      "both",
+      "Sales",
+      "Person",
+      "and",
+      "Manager",
+      "titles",
+      "?"
+    ],
+    "sql": {
+      "from": {
+        "table_units": [
+          [
+            "table_unit",
+            1
+          ],
+          [
+            "table_unit",
+            13
+          ]
+        ],
+        "conds": [
+          [
+            false,
+            2,
+            [
+              0,
+              [
+                0,
+                3,
+                false
+              ],
+              null
+            ],
+            [
+              0,
+              52,
+              false
+            ],
+            null
+          ]
+        ]
+      },
+      "select": [
+        false,
+        [
+          [
+            0,
+            [
+              0,
+              [
+                0,
+                5,
+                false
+              ],
+              null
+            ]
+          ]
+        ]
+      ],
+      "where": [
+        [
+          false,
+          2,
+          [
+            0,
+            [
+              0,
+              55,
+              false
+            ],
+            null
+          ],
+          "\"Sales Person\"",
+          null
+        ]
+      ],
+      "groupBy": [],
+      "having": [],
+      "orderBy": [],
+      "limit": null,
+      "intersect": {
+        "from": {
+          "table_units": [
+            [
+              "table_unit",
+              1
+            ],
+            [
+              "table_unit",
+              13
+            ]
+          ],
+          "conds": [
+            [
+              false,
+              2,
+              [
+                0,
+                [
+                  0,
+                  3,
+                  false
+                ],
+                null
+              ],
+              [
+                0,
+                52,
+                false
+              ],
+              null
+            ]
+          ]
+        },
+        "select": [
+          false,
+          [
+            [
+              0,
+              [
+                0,
+                [
+                  0,
+                  5,
+                  false
+                ],
+                null
+              ]
+            ]
+          ]
+        ],
+        "where": [
+          [
+            false,
+            2,
+            [
+              0,
+              [
+                0,
+                55,
+                false
+              ],
+              null
+            ],
+            "\"Manager\"",
+            null
+          ]
+        ],
+        "groupBy": [],
+        "having": [],
+        "orderBy": [],
+        "limit": null,
+        "intersect": null,
+        "union": null,
+        "except": null
+      },
+      "union": null,
+      "except": null
+    }
+  },
+  {
+    "db_id": "department_store",
+    "question": "Which departments have no staff currently assigned?",
+    "query": "SELECT department_name FROM Departments WHERE department_id NOT IN (SELECT department_id FROM Staff_Department_Assignments WHERE date_assigned_to IS NULL)",
+    "query_toks": [
+      "SELECT",
+      "department_name",
+      "FROM",
+      "Departments",
+      "WHERE",
+      "department_id",
+      "NOT",
+      "IN",
+      "(",
+      "SELECT",
+      "department_id",
+      "FROM",
+      "Staff_Department_Assignments",
+      "WHERE",
+      "date_assigned_to",
+      "IS",
+      "NULL",
+      ")"
+    ],
+    "query_toks_no_value": [
+      "select",
+      "department_name",
+      "from",
+      "departments",
+      "where",
+      "department_id",
+      "not",
+      "in",
+      "(",
+      "select",
+      "department_id",
+      "from",
+      "staff_department_assignments",
+      "where",
+      "date_assigned_to",
+      "is",
+      "null",
+      ")"
+    ],
+    "question_toks": [
+      "Which",
+      "departments",
+      "have",
+      "no",
+      "staff",
+      "currently",
+      "assigned",
+      "?"
+    ],
+    "sql": {
+      "from": {
+        "table_units": [
+          [
+            "table_unit",
+            6
+          ]
+        ],
+        "conds": []
+      },
+      "select": [
+        false,
+        [
+          [
+            0,
+            [
+              0,
+              [
+                0,
+                26,
+                false
+              ],
+              null
+            ]
+          ]
+        ]
+      ],
+      "where": [
+        [
+          false,
+          10,
+          [
+            0,
+            [
+              0,
+              25,
+              false
+            ],
+            null
+          ],
+          {
+            "from": {
+              "table_units": [
+                [
+                  "table_unit",
+                  13
+                ]
+              ],
+              "conds": []
+            },
+            "select": [
+              false,
+              [
+                [
+                  0,
+                  [
+                    0,
+                    [
+                      0,
+                      53,
+                      false
+                    ],
+                    null
+                  ]
+                ]
+              ]
+            ],
+            "where": [
+              [
+                false,
+                8,
+                [
+                  0,
+                  [
+                    0,
+                    56,
+                    false
+                  ],
+                  null
+                ],
+                null,
+                null
+              ]
+            ],
+            "groupBy": [],
+            "having": [],
+            "orderBy": [],
+            "limit": null,
+            "intersect": null,
+            "union": null,
+            "except": null
+          },
+          null
+        ]
+      ],
+      "groupBy": [],
+      "having": [],
+      "orderBy": [],
+      "limit": null,
+      "intersect": null,
+      "union": null,
+      "except": null
+    }
+  },
+  {
+    "db_id": "department_store",
+    "question": "Find all customers who have never placed an order.",
+    "query": "SELECT customer_id, customer_name FROM Customers WHERE customer_id NOT IN (SELECT customer_id FROM Customer_Orders)",
+    "query_toks": [
+      "SELECT",
+      "customer_id",
+      ",",
+      "customer_name",
+      "FROM",
+      "Customers",
+      "WHERE",
+      "customer_id",
+      "NOT",
+      "IN",
+      "(",
+      "SELECT",
+      "customer_id",
+      "FROM",
+      "Customer_Orders",
+      ")"
+    ],
+    "query_toks_no_value": [
+      "select",
+      "customer_id",
+      ",",
+      "customer_name",
+      "from",
+      "customers",
+      "where",
+      "customer_id",
+      "not",
+      "in",
+      "(",
+      "select",
+      "customer_id",
+      "from",
+      "customer_orders",
+      ")"
+    ],
+    "question_toks": [
+      "Find",
+      "all",
+      "customers",
+      "who",
+      "have",
+      "never",
+      "placed",
+      "an",
+      "order",
+      "."
+    ],
+    "sql": {
+      "from": {
+        "table_units": [
+          [
+            "table_unit",
+            2
+          ]
+        ],
+        "conds": []
+      },
+      "select": [
+        false,
+        [
+          [
+            0,
+            [
+              0,
+              [
+                0,
+                8,
+                false
+              ],
+              null
+            ]
+          ],
+          [
+            0,
+            [
+              0,
+              [
+                0,
+                9,
+                false
+              ],
+              null
+            ]
+          ]
+        ]
+      ],
+      "where": [
+        [
+          false,
+          10,
+          [
+            0,
+            [
+              0,
+              8,
+              false
+            ],
+            null
+          ],
+          {
+            "from": {
+              "table_units": [
+                [
+                  "table_unit",
+                  3
+                ]
+              ],
+              "conds": []
+            },
+            "select": [
+              false,
+              [
+                [
+                  0,
+                  [
+                    0,
+                    [
+                      0,
+                      11,
+                      false
+                    ],
+                    null
+                  ]
+                ]
+              ]
+            ],
+            "where": [],
+            "groupBy": [],
+            "having": [],
+            "orderBy": [],
+            "limit": null,
+            "intersect": null,
+            "union": null,
+            "except": null
+          },
+          null
+        ]
+      ],
+      "groupBy": [],
+      "having": [],
+      "orderBy": [],
+      "limit": null,
+      "intersect": null,
+      "union": null,
+      "except": null
+    }
+  },
+  {
+    "db_id": "department_store",
+    "question": "List all staff names along with the department name they are currently assigned to.",
+    "query": "SELECT T1.staff_name, T3.department_name FROM staff AS T1 JOIN Staff_Department_Assignments AS T2 ON T1.staff_id = T2.staff_id JOIN Departments AS T3 ON T2.department_id = T3.department_id WHERE T2.date_assigned_to IS NULL",
+    "query_toks": [
+      "SELECT",
+      "T1.staff_name",
+      ",",
+      "T3.department_name",
+      "FROM",
+      "staff",
+      "AS",
+      "T1",
+      "JOIN",
+      "Staff_Department_Assignments",
+      "AS",
+      "T2",
+      "ON",
+      "T1.staff_id",
+      "=",
+      "T2.staff_id",
+      "JOIN",
+      "Departments",
+      "AS",
+      "T3",
+      "ON",
+      "T2.department_id",
+      "=",
+      "T3.department_id",
+      "WHERE",
+      "T2.date_assigned_to",
+      "IS",
+      "NULL"
+    ],
+    "query_toks_no_value": [
+      "select",
+      "t1",
+      ".",
+      "staff_name",
+      ",",
+      "t3",
+      ".",
+      "department_name",
+      "from",
+      "staff",
+      "as",
+      "t1",
+      "join",
+      "staff_department_assignments",
+      "as",
+      "t2",
+      "on",
+      "t1",
+      ".",
+      "staff_id",
+      "=",
+      "t2",
+      ".",
+      "staff_id",
+      "join",
+      "departments",
+      "as",
+      "t3",
+      "on",
+      "t2",
+      ".",
+      "department_id",
+      "=",
+      "t3",
+      ".",
+      "department_id",
+      "where",
+      "t2",
+      ".",
+      "date_assigned_to",
+      "is",
+      "null"
+    ],
+    "question_toks": [
+      "List",
+      "all",
+      "staff",
+      "names",
+      "along",
+      "with",
+      "the",
+      "department",
+      "name",
+      "they",
+      "are",
+      "currently",
+      "assigned",
+      "to",
+      "."
+    ],
+    "sql": {
+      "from": {
+        "table_units": [
+          [
+            "table_unit",
+            1
+          ],
+          [
+            "table_unit",
+            13
+          ],
+          [
+            "table_unit",
+            6
+          ]
+        ],
+        "conds": [
+          [
+            false,
+            2,
+            [
+              0,
+              [
+                0,
+                3,
+                false
+              ],
+              null
+            ],
+            [
+              0,
+              52,
+              false
+            ],
+            null
+          ],
+          "and",
+          [
+            false,
+            2,
+            [
+              0,
+              [
+                0,
+                53,
+                false
+              ],
+              null
+            ],
+            [
+              0,
+              25,
+              false
+            ],
+            null
+          ]
+        ]
+      },
+      "select": [
+        false,
+        [
+          [
+            0,
+            [
+              0,
+              [
+                0,
+                5,
+                false
+              ],
+              null
+            ]
+          ],
+          [
+            0,
+            [
+              0,
+              [
+                0,
+                26,
+                false
+              ],
+              null
+            ]
+          ]
+        ]
+      ],
+      "where": [
+        [
+          false,
+          8,
+          [
+            0,
+            [
+              0,
+              56,
+              false
+            ],
+            null
+          ],
+          null,
+          null
+        ]
+      ],
+      "groupBy": [],
+      "having": [],
+      "orderBy": [],
+      "limit": null,
+      "intersect": null,
+      "union": null,
+      "except": null
+    }
+  },
+  {
+    "db_id": "department_store",
+    "question": "How many products does each supplier provide, sorted by count descending?",
+    "query": "SELECT T1.supplier_name, COUNT(DISTINCT T2.product_id) AS product_count FROM Suppliers AS T1 JOIN Product_Suppliers AS T2 ON T1.supplier_id = T2.supplier_id GROUP BY T1.supplier_id ORDER BY product_count DESC",
+    "query_toks": [
+      "SELECT",
+      "T1.supplier_name",
+      ",",
+      "COUNT",
+      "(",
+      "DISTINCT",
+      "T2.product_id",
+      ")",
+      "AS",
+      "product_count",
+      "FROM",
+      "Suppliers",
+      "AS",
+      "T1",
+      "JOIN",
+      "Product_Suppliers",
+      "AS",
+      "T2",
+      "ON",
+      "T1.supplier_id",
+      "=",
+      "T2.supplier_id",
+      "GROUP",
+      "BY",
+      "T1.supplier_id",
+      "ORDER",
+      "BY",
+      "product_count",
+      "DESC"
+    ],
+    "query_toks_no_value": [
+      "select",
+      "t1",
+      ".",
+      "supplier_name",
+      ",",
+      "count",
+      "(",
+      "distinct",
+      "t2",
+      ".",
+      "product_id",
+      ")",
+      "as",
+      "product_count",
+      "from",
+      "suppliers",
+      "as",
+      "t1",
+      "join",
+      "product_suppliers",
+      "as",
+      "t2",
+      "on",
+      "t1",
+      ".",
+      "supplier_id",
+      "=",
+      "t2",
+      ".",
+      "supplier_id",
+      "group",
+      "by",
+      "t1",
+      ".",
+      "supplier_id",
+      "order",
+      "by",
+      "product_count",
+      "desc"
+    ],
+    "question_toks": [
+      "How",
+      "many",
+      "products",
+      "does",
+      "each",
+      "supplier",
+      "provide",
+      ",",
+      "sorted",
+      "by",
+      "count",
+      "descending",
+      "?"
+    ],
+    "sql": {
+      "from": {
+        "table_units": [
+          [
+            "table_unit",
+            7
+          ],
+          [
+            "table_unit",
+            8
+          ]
+        ],
+        "conds": [
+          [
+            false,
+            2,
+            [
+              0,
+              [
+                0,
+                30,
+                false
+              ],
+              null
+            ],
+            [
+              0,
+              33,
+              false
+            ],
+            null
+          ]
+        ]
+      },
+      "select": [
+        false,
+        [
+          [
+            0,
+            [
+              0,
+              [
+                0,
+                31,
+                false
+              ],
+              null
+            ]
+          ],
+          [
+            3,
+            [
+              1,
+              [
+                0,
+                34,
+                false
+              ],
+              null
+            ]
+          ]
+        ]
+      ],
+      "where": [],
+      "groupBy": [
+        [
+          0,
+          30,
+          false
+        ]
+      ],
+      "having": [],
+      "orderBy": [
+        "desc",
+        [
+          [
+            0,
+            [
+              0,
+              -1,
+              false
+            ],
+            null
+          ]
+        ]
+      ],
+      "limit": null,
+      "intersect": null,
+      "union": null,
+      "except": null
+    }
+  },
+  {
+    "db_id": "department_store",
+    "question": "What is the gender breakdown of staff in each department currently?",
+    "query": "SELECT T3.department_name, T1.staff_gender, COUNT(*) FROM staff AS T1 JOIN Staff_Department_Assignments AS T2 ON T1.staff_id = T2.staff_id JOIN Departments AS T3 ON T2.department_id = T3.department_id WHERE T2.date_assigned_to IS NULL GROUP BY T3.department_id, T1.staff_gender",
+    "query_toks": [
+      "SELECT",
+      "T3.department_name",
+      ",",
+      "T1.staff_gender",
+      ",",
+      "COUNT",
+      "(",
+      "*",
+      ")",
+      "FROM",
+      "staff",
+      "AS",
+      "T1",
+      "JOIN",
+      "Staff_Department_Assignments",
+      "AS",
+      "T2",
+      "ON",
+      "T1.staff_id",
+      "=",
+      "T2.staff_id",
+      "JOIN",
+      "Departments",
+      "AS",
+      "T3",
+      "ON",
+      "T2.department_id",
+      "=",
+      "T3.department_id",
+      "WHERE",
+      "T2.date_assigned_to",
+      "IS",
+      "NULL",
+      "GROUP",
+      "BY",
+      "T3.department_id",
+      ",",
+      "T1.staff_gender"
+    ],
+    "query_toks_no_value": [
+      "select",
+      "t3",
+      ".",
+      "department_name",
+      ",",
+      "t1",
+      ".",
+      "staff_gender",
+      ",",
+      "count",
+      "(",
+      "*",
+      ")",
+      "from",
+      "staff",
+      "as",
+      "t1",
+      "join",
+      "staff_department_assignments",
+      "as",
+      "t2",
+      "on",
+      "t1",
+      ".",
+      "staff_id",
+      "=",
+      "t2",
+      ".",
+      "staff_id",
+      "join",
+      "departments",
+      "as",
+      "t3",
+      "on",
+      "t2",
+      ".",
+      "department_id",
+      "=",
+      "t3",
+      ".",
+      "department_id",
+      "where",
+      "t2",
+      ".",
+      "date_assigned_to",
+      "is",
+      "null",
+      "group",
+      "by",
+      "t3",
+      ".",
+      "department_id",
+      ",",
+      "t1",
+      ".",
+      "staff_gender"
+    ],
+    "question_toks": [
+      "What",
+      "is",
+      "the",
+      "gender",
+      "breakdown",
+      "of",
+      "staff",
+      "in",
+      "each",
+      "department",
+      "currently",
+      "?"
+    ],
+    "sql": {
+      "from": {
+        "table_units": [
+          [
+            "table_unit",
+            1
+          ],
+          [
+            "table_unit",
+            13
+          ],
+          [
+            "table_unit",
+            6
+          ]
+        ],
+        "conds": [
+          [
+            false,
+            2,
+            [
+              0,
+              [
+                0,
+                3,
+                false
+              ],
+              null
+            ],
+            [
+              0,
+              52,
+              false
+            ],
+            null
+          ],
+          "and",
+          [
+            false,
+            2,
+            [
+              0,
+              [
+                0,
+                53,
+                false
+              ],
+              null
+            ],
+            [
+              0,
+              25,
+              false
+            ],
+            null
+          ]
+        ]
+      },
+      "select": [
+        false,
+        [
+          [
+            0,
+            [
+              0,
+              [
+                0,
+                26,
+                false
+              ],
+              null
+            ]
+          ],
+          [
+            0,
+            [
+              0,
+              [
+                0,
+                4,
+                false
+              ],
+              null
+            ]
+          ],
+          [
+            3,
+            [
+              0,
+              [
+                0,
+                0,
+                false
+              ],
+              null
+            ]
+          ]
+        ]
+      ],
+      "where": [
+        [
+          false,
+          8,
+          [
+            0,
+            [
+              0,
+              56,
+              false
+            ],
+            null
+          ],
+          null,
+          null
+        ]
+      ],
+      "groupBy": [
+        [
+          0,
+          25,
+          false
+        ],
+        [
+          0,
+          4,
+          false
+        ]
+      ],
+      "having": [],
+      "orderBy": [],
+      "limit": null,
+      "intersect": null,
+      "union": null,
+      "except": null
+    }
+  },
+  {
+    "db_id": "department_store",
+    "question": "List all staff who are currently assigned as Cashier or Sales Person.",
+    "query": "SELECT DISTINCT T1.staff_name FROM staff AS T1 JOIN Staff_Department_Assignments AS T2 ON T1.staff_id = T2.staff_id WHERE T2.date_assigned_to IS NULL AND (T2.job_title_code = \"Cashier\" OR T2.job_title_code = \"Sales Person\")",
+    "query_toks": [
+      "SELECT",
+      "DISTINCT",
+      "T1.staff_name",
+      "FROM",
+      "staff",
+      "AS",
+      "T1",
+      "JOIN",
+      "Staff_Department_Assignments",
+      "AS",
+      "T2",
+      "ON",
+      "T1.staff_id",
+      "=",
+      "T2.staff_id",
+      "WHERE",
+      "T2.date_assigned_to",
+      "IS",
+      "NULL",
+      "AND",
+      "(",
+      "T2.job_title_code",
+      "=",
+      "\"Cashier\"",
+      "OR",
+      "T2.job_title_code",
+      "=",
+      "\"Sales Person\"",
+      ")"
+    ],
+    "query_toks_no_value": [
+      "select",
+      "distinct",
+      "t1",
+      ".",
+      "staff_name",
+      "from",
+      "staff",
+      "as",
+      "t1",
+      "join",
+      "staff_department_assignments",
+      "as",
+      "t2",
+      "on",
+      "t1",
+      ".",
+      "staff_id",
+      "=",
+      "t2",
+      ".",
+      "staff_id",
+      "where",
+      "t2",
+      ".",
+      "date_assigned_to",
+      "is",
+      "null",
+      "and",
+      "(",
+      "t2",
+      ".",
+      "job_title_code",
+      "=",
+      "value",
+      "or",
+      "t2",
+      ".",
+      "job_title_code",
+      "=",
+      "value",
+      ")"
+    ],
+    "question_toks": [
+      "List",
+      "all",
+      "staff",
+      "who",
+      "are",
+      "currently",
+      "assigned",
+      "as",
+      "Cashier",
+      "or",
+      "Sales",
+      "Person",
+      "."
+    ],
+    "sql": {
+      "from": {
+        "table_units": [
+          [
+            "table_unit",
+            1
+          ],
+          [
+            "table_unit",
+            13
+          ]
+        ],
+        "conds": [
+          [
+            false,
+            2,
+            [
+              0,
+              [
+                0,
+                3,
+                false
+              ],
+              null
+            ],
+            [
+              0,
+              52,
+              false
+            ],
+            null
+          ]
+        ]
+      },
+      "select": [
+        false,
+        [
+          [
+            0,
+            [
+              0,
+              [
+                0,
+                5,
+                false
+              ],
+              null
+            ]
+          ]
+        ]
+      ],
+      "where": [
+        [
+          false,
+          8,
+          [
+            0,
+            [
+              0,
+              56,
+              false
+            ],
+            null
+          ],
+          null,
+          null
+        ],
+        "and",
+        [
+          false,
+          2,
+          [
+            0,
+            [
+              0,
+              55,
+              false
+            ],
+            null
+          ],
+          "\"Cashier\"",
+          null
+        ],
+        "or",
+        [
+          false,
+          2,
+          [
+            0,
+            [
+              0,
+              55,
+              false
+            ],
+            null
+          ],
+          "\"Sales Person\"",
+          null
+        ]
+      ],
+      "groupBy": [],
+      "having": [],
+      "orderBy": [],
+      "limit": null,
+      "intersect": null,
+      "union": null,
+      "except": null
+    }
+  }
+]

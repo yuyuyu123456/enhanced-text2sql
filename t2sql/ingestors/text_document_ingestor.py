@@ -11,7 +11,7 @@ from pathlib import Path
 
 
 class TablesListLLM(BaseModel):
-    tables: list[str]
+    tables: list[str] = []
 
 
 class Column(BaseModel):
@@ -40,7 +40,7 @@ class ProcessDocumentLLM(BaseModel):
 
 
 class EntitiesLLM(BaseModel):
-    entities: list[str]
+    entities: list[str] = []
 
 
 class TextIngestion(BaseText2SQLAgent, ABC):
@@ -61,7 +61,6 @@ class TextIngestion(BaseText2SQLAgent, ABC):
         completion_result = await self._router.acompletion(
             self.default_model,
             messages=messages,
-            response_format=ProcessDocumentLLM,
         )
 
         result = ProcessDocumentLLM(
@@ -85,14 +84,19 @@ class TextIngestion(BaseText2SQLAgent, ABC):
         result = await self._router.acompletion(
             model=self.default_model,
             messages=messages,
-            response_format=EntitiesLLM,
-            n=7,
+            n=4,
             temperature=1,
         )
 
         entities = []
         for r in result.choices:
-            entities.extend(EntitiesLLM(**parse_json(r.message.content)).entities)
+            parsed = parse_json(r.message.content)
+            if parsed is None:
+                continue
+            try:
+                entities.extend(EntitiesLLM(**parsed).entities)
+            except Exception:
+                continue
 
         entities, counts = np.unique(entities, return_counts=True)
         processed_document.strong_entities = entities[counts > 3].tolist()
@@ -113,7 +117,6 @@ class TextIngestion(BaseText2SQLAgent, ABC):
             ai_msg = await self._router.acompletion(
                 model=self.default_model,
                 messages=messages,
-                response_format=TablesListLLM,
             )
             answer = TablesListLLM(**parse_json(ai_msg.choices[0].message.content))
             return answer.tables
@@ -371,7 +374,8 @@ class TextIngestion(BaseText2SQLAgent, ABC):
             input_path = os.path.join(self._docs_json_folder, filename)
             with open(input_path, "r") as file:
                 json_content = json.load(file)
-                await self.learn_json_document(json_content, allow_replace=True)
+                document_data = ProcessDocumentLLM(**json_content)
+                await self.learn_json_document(document_data, allow_replace=True)
                 progress += 1.0
                 logger.info(
                     f"Training on documentation from ({self._docs_json_folder}) [{progress}/{files_count}] | {progress / files_count * 100}"
@@ -394,6 +398,12 @@ class TextIngestion(BaseText2SQLAgent, ABC):
         progress = 0.0
         files = os.listdir(self._examples_extended_folder)
         files_count = len(files)
+
+        if files_count == 0:
+            logger.info(
+                "No examples found in examples_extended_folder, skipping train_on_examples."
+            )
+            return
 
         for filename in files:
             input_path = os.path.join(self._examples_extended_folder, filename)
@@ -454,6 +464,12 @@ class TextIngestion(BaseText2SQLAgent, ABC):
         progress = 0.0
         files = os.listdir(self._examples_extended_folder)
         files_count = len(files)
+
+        if files_count == 0:
+            logger.info(
+                "No examples found in examples_extended_folder, skipping train_on_tables_question_relation."
+            )
+            return
 
         for filename in files:
             input_path = os.path.join(self._examples_extended_folder, filename)
@@ -538,6 +554,116 @@ class TextIngestion(BaseText2SQLAgent, ABC):
                 f"Training on documentation for {table_name} [{progress}/{tables_count}] | {progress / tables_count * 100}"
             )
 
+    async def train_from_schema_df(
+        self,
+        schema_df: "pd.DataFrame",
+        db_name: str = "default",
+        train_if_doc_exists: bool = False,
+    ) -> None:
+        """Train on schema from a DataFrame (parsed from schema.sql) instead of querying
+        INFORMATION_SCHEMA. The DataFrame must have columns:
+        table_catalog, table_schema, table_name, column_name, data_type
+        and optionally: is_pk, fk_table, fk_column for richer documentation.
+
+        Args:
+            schema_df: DataFrame with schema information.
+            db_name: Database name to use for file naming.
+            train_if_doc_exists: Whether to overwrite existing markdown docs.
+        """
+        import pandas as pd
+
+        inf = schema_df[
+            ["table_catalog", "table_schema", "table_name", "column_name", "data_type"]
+        ].copy()
+
+        # Build list of all table identifiers
+        list_tables = list(
+            map(
+                lambda x: f"{x[0]}.{x[1]}.{x[2]}",
+                inf.groupby(
+                    ["table_catalog", "table_schema", "table_name"]
+                )
+                .count()
+                .index.to_list(),
+            )
+        )
+
+        tables_count = len(
+            inf.groupby(["table_catalog", "table_schema", "table_name"])
+        )
+        progress = 0
+
+        for tbl in inf.groupby(["table_catalog", "table_schema", "table_name"]):
+            table_name = tbl[0][2]
+
+            fname = Path(f"{self._docs_md_folder}/{db_name}_{table_name}.md")
+
+            if fname.is_file() and not train_if_doc_exists:
+                logger.debug(f"Do not replace the document {fname}")
+                continue
+
+            # Build column info, enriching with FK info if available
+            tbl_cols = tbl[1][["column_name", "data_type"]].copy()
+            if "is_pk" in schema_df.columns:
+                pk_info = schema_df[
+                    (schema_df["table_name"] == table_name)
+                    & (schema_df["is_pk"] == True)
+                ]["column_name"].tolist()
+            else:
+                pk_info = []
+
+            if "fk_table" in schema_df.columns:
+                fk_info = schema_df[
+                    (schema_df["table_name"] == table_name)
+                    & (schema_df["fk_table"].notna())
+                ][["column_name", "fk_table", "fk_column"]].to_dict("records")
+            else:
+                fk_info = []
+
+            tbl_col = json.dumps(tbl_cols.to_dict("records"))
+
+            # Build richer table info including FK relationships
+            table_info_parts = [
+                f"Table: {table_name}",
+                f"Total list of Tables: {list_tables}",
+            ]
+            if pk_info:
+                table_info_parts.append(f"Primary Key(s): {', '.join(pk_info)}")
+            if fk_info:
+                fk_lines = [
+                    f"  - {f['column_name']} → {f['fk_table']}({f['fk_column']})"
+                    for f in fk_info
+                ]
+                table_info_parts.append(
+                    f"Foreign Keys:\n" + "\n".join(fk_lines)
+                )
+            table_info_parts.append(f"Table Info: {tbl_col}")
+            table_info = "\n\n".join(table_info_parts)
+
+            content = self.get_prompt("PREPARE_MD_FROM_SCHEMA").substitute(
+                {"table": table_info}
+            )
+            messages = [
+                {"role": "user", "content": content},
+            ]
+            completion_result = await self._router.acompletion(
+                self.default_model,
+                messages=messages,
+            )
+            md_content = completion_result.choices[0].message.content
+
+            with open(fname, "w") as file:
+                file.write(md_content)
+
+            json_content = await self.learn_md_document(fname.name, md_content)
+            await self.learn_json_document(json_content, allow_replace=True)
+
+            progress += 1.0
+            logger.info(
+                f"Training on documentation for {table_name} "
+                f"[{progress}/{tables_count}] | {progress / tables_count * 100:.0f}%"
+            )
+
     async def train_in_domain_specific(self):
         """
         Trains the system on domain-specific mappings and relationships.
@@ -561,6 +687,12 @@ class TextIngestion(BaseText2SQLAgent, ABC):
             raise ValueError("Specify 'examples_extended_folder' to train the data.")
 
         files = os.listdir(self._examples_extended_folder)
+        if len(files) == 0:
+            logger.info(
+                "No examples found in examples_extended_folder, skipping train_in_domain_specific."
+            )
+            return
+
         context = ""
 
         for filename in files:
@@ -658,6 +790,10 @@ class TextIngestion(BaseText2SQLAgent, ABC):
             os.makedirs(self._examples_extended_folder)
 
         input_path = os.path.join(self._examples_folder, "examples.json")
+        if not os.path.exists(input_path):
+            logger.info("No examples.json found, skipping expand_examples_structure.")
+            return
+
         with open(input_path, "r") as file:
             data = json.load(file)
             for idx, example in enumerate(data):

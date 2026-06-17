@@ -18,7 +18,11 @@ class ChromaDB(VectorStore):
         super().__init__(config)
 
         path = config.get("db_path", ".")
-        self.embedding_function = OpenAIEmbeddingFunction(config.get("open_ai_key"))
+        self.embedding_function = OpenAIEmbeddingFunction(
+            api_key=config.get("embedding_api_key", config.get("open_ai_key")),
+            api_base=config.get("embedding_api_base"),
+            model_name=config.get("embedding_model_name", "text-embedding-ada-002"),
+        )
 
         curr_client = config.get("client", "persistent")
         collection_metadata = config.get("collection_metadata", {})

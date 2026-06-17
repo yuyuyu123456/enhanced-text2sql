@@ -16,16 +16,90 @@ from t2sql.vectordb.chromadb import VectorStore
 from typing import Any
 from t2sql.utils import parse_json, calculate_threshold
 import json
-from pydantic import BaseModel
+from pydantic import BaseModel, field_validator
+import litellm
+
+litellm.drop_params = True
+class DataSource(BaseModel):
+    source: str = ""
+    columns: list[str] = []
+
+    @field_validator("columns", mode="before")
+    @classmethod
+    def coerce_columns(cls, v):
+        if isinstance(v, str):
+            return [v] if v else []
+        if v is None:
+            return []
+        return v
+
+    @field_validator("source", mode="before")
+    @classmethod
+    def coerce_source(cls, v):
+        if v is None:
+            return ""
+        return str(v)
+
+
+class Calculations(BaseModel):
+    operation: str = ""
+    arguments: list[str] = []
+    grouping: list[str] = []
+    conditions: str = ""
+
+    @field_validator("arguments", "grouping", mode="before")
+    @classmethod
+    def coerce_to_list(cls, v):
+        if isinstance(v, str):
+            return [v] if v else []
+        if v is None:
+            return []
+        return v
+
+    @field_validator("operation", "conditions", mode="before")
+    @classmethod
+    def coerce_to_str(cls, v):
+        if v is None:
+            return ""
+        return str(v)
+
+
+class NormalizedStructureLLM(BaseModel):
+    init_question: str | None = None
+    tables: list[str] = []
+    normalized_question: str = ""
+    requested_entities: str = ""
+    data_source: list[DataSource] = []
+    calculations: list[Calculations] = []
+    main_clause: str | None = None
+
+    @field_validator("calculations", mode="before")
+    @classmethod
+    def filter_null_calculations(cls, v):
+        """Remove null/empty calculation entries from the list."""
+        if not isinstance(v, list):
+            return []
+        return [
+            item for item in v
+            if item is not None and isinstance(item, dict) and item.get("operation") is not None
+        ]
+
+    @field_validator("data_source", mode="before")
+    @classmethod
+    def filter_null_sources(cls, v):
+        """Remove null/empty data source entries."""
+        if not isinstance(v, list):
+            return []
+        return [item for item in v if item is not None and isinstance(item, dict)]
 
 
 class ExpandQuestionLLM(BaseModel):
-    chain_of_thoughts: str
-    questions: list[str]
+    chain_of_thoughts: str = ""
+    questions: list[str] = []
 
 
 class TablesListLLM(BaseModel):
-    tables: list[str]
+    tables: list[str] = []
 
 
 class TableWhyLLM(BaseModel):
@@ -37,35 +111,19 @@ class TableWhyListLLM(BaseModel):
     tables: list[TableWhyLLM]
 
 
-class Calculations(BaseModel):
-    operation: str
-    arguments: list[str]
-    grouping: list[str]
-    conditions: str
-
-
-class DataSource(BaseModel):
-    source: str
-    columns: list[str]
-
-
-class NormalizedStructureLLM(BaseModel):
-    init_question: str | None = None
-    tables: list[str] = []
-    normalized_question: str
-    requested_entities: str
-    data_source: list[DataSource]
-    calculations: list[Calculations]
-    main_clause: str | None = None
-
 
 class MainClauseLLM(BaseModel):
     main_clause: str | None = None
     details: str | None = None
 
+_MODEL_CROSS = None
 
-MODEL_CROSS = CrossEncoder("cross-encoder/quora-roberta-large")
-
+# MODEL_CROSS = CrossEncoder("cross-encoder/quora-roberta-large")
+def get_cross_encoder():
+    global _MODEL_CROSS
+    if _MODEL_CROSS is None:
+        _MODEL_CROSS = CrossEncoder("cross-encoder/quora-roberta-large")
+    return _MODEL_CROSS
 
 class BaseText2SQLAgent(ABC):
     _prompts: dict = {}
@@ -220,7 +278,7 @@ class BaseText2SQLAgent(ABC):
             logger.info("...RERANKING")
             try:
                 # TODO explore async version
-                rank = MODEL_CROSS.rank(init_question, corpus_short)
+                rank = get_cross_encoder().rank(init_question, corpus_short)
                 for r in rank:
                     query_result["distances"][0][indx[r["corpus_id"]]] = 1 - r["score"]
 
@@ -337,13 +395,12 @@ class BaseText2SQLAgent(ABC):
         ai_msg = await self._router.acompletion(
             messages=messages,
             model=self.default_model,
-            response_format=TablesListLLM,
         )
         answer = TablesListLLM(**parse_json(ai_msg.choices[0].message.content))
         return answer.tables
 
     async def normalize_and_structure(
-        self, question, sql=None
+        self, question, sql=None, max_retries: int = 2
     ) -> NormalizedStructureLLM:
         sql_snippet = f"""\n\nSQL SNIPPET:\n{sql}""" if sql is not None else ""
         messages = [
@@ -357,14 +414,45 @@ class BaseText2SQLAgent(ABC):
             },
         ]
 
-        ai_msg = await self._router.acompletion(
-            messages=messages,
-            model=self.default_model,
-            response_format=NormalizedStructureLLM,
-        )
+        last_error = None
+        result = NormalizedStructureLLM(init_question=question)  # fallback default
+        for attempt in range(max_retries + 1):
+            try:
+                ai_msg = await self._router.acompletion(
+                    messages=messages,
+                    model=self.default_model,
+                )
+                raw = ai_msg.choices[0].message.content
+                parsed = parse_json(raw)
+                result = NormalizedStructureLLM(**parsed)
+                result.init_question = question
+                break
+            except Exception as e:
+                last_error = e
+                if attempt < max_retries:
+                    logger.warning(
+                        f"normalize_and_structure attempt {attempt+1} failed: {e}. Retrying..."
+                    )
+                    # Add a stricter constraint hint for retry
+                    messages.append({
+                        "role": "user",
+                        "content": (
+                            "Your previous JSON was invalid. Ensure:\n"
+                            '- "operation" in calculations must be a non-null string\n'
+                            '- "arguments" and "grouping" must be arrays (use [] if empty)\n'
+                            '- "calculations" must be an array of objects, not nulls\n'
+                            '- "data_source" must be an array of objects with "source" and "columns" fields\n'
+                            "Return ONLY valid JSON. No markdown, no extra text."
+                        ),
+                    })
+                else:
+                    logger.error(
+                        f"normalize_and_structure failed after {max_retries+1} attempts: {e}"
+                    )
+                    result = NormalizedStructureLLM(init_question=question)
 
-        result = NormalizedStructureLLM(**parse_json(ai_msg.choices[0].message.content))
-        result.init_question = question
+        if last_error:
+            logger.warning(f"Used fallback result for normalize_and_structure due to: {last_error}")
         if sql is not None:
             tables = await self._extract_tables_from_sql(sql)
             result.tables = tables
@@ -373,7 +461,6 @@ class BaseText2SQLAgent(ABC):
         ai_msg = await self._router.acompletion(
             messages=[{"role": "user", "content": request}],
             model=self.default_model,
-            response_format=MainClauseLLM,
         )
         answer = MainClauseLLM(**parse_json(ai_msg.choices[0].message.content))
 
@@ -421,12 +508,11 @@ class BaseText2SQLAgent(ABC):
                     model=model,
                     messages=messages,
                     reasoning_effort=reasoning_effort,
-                    response_format=TablesListLLM,
                 )
             except:
                 # Models that do not support reasoning_effort
                 ai_res = await self._router.acompletion(
-                    model=model, messages=messages, response_format=TablesListLLM
+                    model=model, messages=messages
                 )
 
             result = TablesListLLM(**parse_json(ai_res.choices[0].message.content))
@@ -610,7 +696,7 @@ class BaseText2SQLAgent(ABC):
             kwargs = {"reasoning_effort": reasoning_effort}
 
         response = await self._router.acompletion(
-            model=model_type, messages=messages, response_format=TablesListLLM, **kwargs
+            model=model_type, messages=messages, **kwargs
         )
 
         result = TablesListLLM(**parse_json(response.choices[0].message.content))
@@ -633,7 +719,6 @@ class BaseText2SQLAgent(ABC):
         response = await self._router.acompletion(
             messages=messages,
             model=self.default_model,
-            response_format=TablesListLLM,
             n=n,
         )
 
@@ -727,7 +812,7 @@ class BaseText2SQLAgent(ABC):
 
         tables = await self._get_tables(
             request,
-            n=7,
+            n=4,
             with_reasoning=with_reasoning,
             reasoning_model=reasoning_model,
             reasoning_effort=reasoning_effort,
@@ -926,7 +1011,6 @@ You should return the result in JSON format:
 """,
                 }
             ],
-            response_format=TableWhyListLLM,
         )
         tables = TableWhyListLLM(**parse_json(response.choices[0].message.content))
         return [table.model_dump() for table in tables.tables]
@@ -1025,7 +1109,6 @@ You should return the result in JSON format:
             ai_msg = await self._router.acompletion(
                 messages=messages,
                 model=self.default_model,
-                response_format=ExpandQuestionLLM,
             )
             questions = ExpandQuestionLLM(
                 **parse_json(ai_msg.choices[0].message.content)

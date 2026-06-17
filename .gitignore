@@ -5,3 +5,4 @@ training_data_storage
 vector_db_storage
 .env
 .venv
+reports
