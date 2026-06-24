@@ -5,7 +5,7 @@
       "litellm_params": {
           "model": "openai/glm-4-flash",
           "api_base": "https://open.bigmodel.cn/api/paas/v4/",
-          "api_key": "d6a4f5c99db346f1ba854f2c6aa8c036.ie0btxtYAM9Vvl4Y",
+          "api_key": "YOUR_API_KEY",
           "n": 1
       }
     },
@@ -14,7 +14,7 @@
       "litellm_params": {
           "model": "openai/glm-4-plus",
           "api_base": "https://open.bigmodel.cn/api/paas/v4/",
-          "api_key": "d6a4f5c99db346f1ba854f2c6aa8c036.ie0btxtYAM9Vvl4Y",
+          "api_key": "YOUR_API_KEY",
           "n": 1
       }
     },
@@ -23,7 +23,7 @@
       "litellm_params": {
           "model": "openai/glm-4-plus",
           "api_base": "https://open.bigmodel.cn/api/paas/v4/",
-          "api_key": "d6a4f5c99db346f1ba854f2c6aa8c036.ie0btxtYAM9Vvl4Y",
+          "api_key": "YOUR_API_KEY",
           "n": 1
       }
     },
@@ -32,13 +32,13 @@
       "litellm_params": {
           "model": "openai/glm-4-plus",
           "api_base": "https://open.bigmodel.cn/api/paas/v4/",
-          "api_key": "d6a4f5c99db346f1ba854f2c6aa8c036.ie0btxtYAM9Vvl4Y",
+          "api_key": "YOUR_API_KEY",
           "n": 1
       }
     }
   ],
-  "open_ai_key": "d6a4f5c99db346f1ba854f2c6aa8c036.ie0btxtYAM9Vvl4Y",
-  "embedding_api_key": "d6a4f5c99db346f1ba854f2c6aa8c036.ie0btxtYAM9Vvl4Y",
+  "open_ai_key": "YOUR_API_KEY",
+  "embedding_api_key": "YOUR_API_KEY",
   "embedding_api_base": "https://open.bigmodel.cn/api/paas/v4/",
   "embedding_model_name": "embedding-3",
   "model_sql": "glm-4-flash",
